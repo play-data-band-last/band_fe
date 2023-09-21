@@ -1,0 +1,345 @@
+.classDetailWrap {
+    width: 100%;
+
+}
+
+.background {
+    width: 100%;
+    background: #f1f3f5;
+}
+
+.detailHeader {
+    width: 100%;
+    height: 7vh;
+    margin-bottom: 8vw;
+    display: flex;
+    align-items: center;
+}
+
+.detailHeaderWrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10vw 0vw 5vw 5vw;
+    gap: 4vw;
+}
+
+.detailHeaderWrap h2 {
+    width: 45%;
+    font-weight: 600;
+    font-size: 4.5vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detailHeaderWrap img {
+    height: 7vw;
+    cursor: pointer;
+}
+
+.back {
+
+}
+
+.iconWrap {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+}
+
+.heart {
+
+}
+
+.share {
+
+}
+
+.more {
+
+}
+
+.selectArea {
+    width: 100%;
+    height: 8vw;
+    margin-bottom: 3px;
+}
+
+.selectAreaInner {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.selectItem {
+    width: 33.3%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selectItem p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.border {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.borderInner {
+    position: absolute;
+    left: 0;
+    width: 25%;
+    height: 3px;
+    background: #333;
+    transition: 0.3s ease;
+}
+
+.mainSwiperSection {
+    width: 100%;
+    background: #eff2f5;
+
+    height: calc(100vh - 20vh);
+    overflow-y: scroll;
+}
+
+.classBackground {
+    width: 100%;
+    height: 30vh;
+    background: #fff;
+    padding-bottom: 3vw;
+}
+
+.classBackground img {
+    width: 100%;
+    height: 100%;
+}
+
+.tags {
+    padding: 0 5vw 4vw 5vw;
+    display: flex;
+    gap: 2vw;
+    flex-wrap: wrap;
+    background: #fff;
+}
+
+.tagsItem {
+    background: #f1f1f1;
+    padding: 1vw 2vw;
+    border-radius: 20px;
+    font-size: 3vw;
+    color: #333;
+}
+
+.descArea {
+    padding: 0 5vw 5vw 5vw;
+    background: #fff;
+    margin-bottom: 3vw;
+}
+
+.descArea h2 {
+    margin-bottom: 3vw;
+    font-weight: 600;
+    font-size: 5vw;
+}
+
+.descAreaParam {
+
+    word-spacing: 0.5vw;
+    line-height: 5vw;
+    font-size: 4vw;
+    margin-bottom: 8vw;
+}
+
+.scheduleArea {
+    padding: 5vw 5vw;
+    background: #fff;
+    margin-bottom: 3vw;
+}
+
+.scheduleAreaTitle {
+    margin-bottom: 6vw;
+}
+
+.scheduleAreaTitle h2 {
+    font-weight: 600;
+}
+
+.scheduleWrap {
+    padding: 3vw;
+    position: relative;
+}
+
+.scheduleItem {
+    width: 100%;
+    border-radius: 20px;
+    padding: 4vw 5vw;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+}
+
+.topSchedule {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    margin-bottom: 3vw;
+}
+
+.topSchedule h2 {
+    font-weight: 600;
+    font-size: 4vw;
+}
+
+.topSchedule p {
+    color: red;
+    font-size: 4vw;
+}
+
+.secondSchedule {
+    font-weight: 600;
+    margin-bottom: 4vw;
+}
+
+.descSchedule {
+    font-size: 3vw;
+}
+
+.descSchedule > div {
+    display: flex;
+    margin-bottom: 3vw;
+}
+
+.descSchedule > div span {
+    color: red;
+}
+
+.descSchedule > div p:first-child {
+    width: 10%;
+    color: #b8b3b3;
+}
+
+.scheduleBtn {
+    position: absolute;
+    top: 6vw;
+    right: 6vw;
+    padding: 2vw 4vw;
+    background: #6e50ff;
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5vw;
+}
+
+.scheduleBtnCancel {
+    position: absolute;
+    top: 6vw;
+    right: 6vw;
+    padding: 2vw 4vw;
+    background: #fff;
+    color: #333;
+    border: 1px solid #6e50ff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5vw;
+}
+
+.scheduleMember {
+    padding: 5vw 5vw;
+    background: #fff;
+}
+
+.memberListWrap {
+
+}
+
+.memberProfile {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    margin-bottom: 3.5vw;
+}
+
+.memberLeft {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memberLeft img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.memberRight {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.memberRight h2 {
+    font-weight: 600;
+    font-size: 4vw;
+}
+
+.memberRight p {
+    font-size: 3vw;
+    color: #7d7676;
+}
+
+.memberRight img {
+    height: 6.5vw;
+}
+
+.memberRightInner {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+.insertBtnWrap {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insertBtn {
+    background-color: #6e50ff;
+    color: white;
+    padding: 3vw 10vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.classDetailMain {
+
+}
+
+.classDetailBoard {
+
+}
+
+.classDetailAlbum {
+
+}
+
+.classDetailChat {
+
+}

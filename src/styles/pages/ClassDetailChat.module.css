@@ -1,0 +1,185 @@
+.mainSwiperSection {
+    width: 100%;
+    height: calc(100vh - 20vh);
+    overflow-y: scroll;
+    background: #eff2f5;
+    padding-bottom: 15vw;
+}
+.chatWrap {
+    width: 100%;
+    padding: 4vw;
+}
+
+.chatContents {
+
+}
+
+.chatDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7vw;
+}
+
+.chatDate p {
+    background: #e0dada;
+    color: #fff;
+    padding: 2vw 2.5vw;
+    border-radius: 20px;
+    font-size: 3vw;
+}
+
+.chatHistory {
+}
+
+.chattingItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    margin-bottom: 5vw;
+}
+
+.chatRight {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+
+.name {
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+.chatLeft {
+    font-size: 3.5vw;
+    display: flex;
+    gap: 2vw;
+}
+
+.chatLeftArea {
+    background: #fff;
+    padding: 2vw 3vw;
+    max-width: 50vw;
+    border-radius: 15px;
+    font-size: 3.5vw;
+}
+
+.chatLeftArea p {
+    word-break: break-all;
+}
+
+.chattingImg {
+    width: 10vw;
+    height: 10vw;
+
+}
+
+.myChatHistory {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4vw;
+}
+
+.spaceArea {
+
+}
+
+
+.myChatHistoryInner {
+    display: flex;
+    gap: 2vw;
+    justify-content: flex-end;
+}
+
+.chattingImg .img {
+    width: 100%;
+    height: 100%;
+    background: #1877f2;
+    border-radius: 50%;
+}
+
+.myChatContents {
+    background: #fff;
+    padding: 2vw 3vw;
+    max-width: 50vw;
+    border-radius: 15px;
+    font-size: 3.5vw;
+}
+
+.myChatContents p {
+    word-break: break-all;
+}
+
+.chatRightText {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chatRightText p {
+    font-size: 2.5vw;
+    color: #a9a8a8;
+}
+
+.timeArea {
+    display: flex;
+    align-items: flex-end;
+}
+
+.timeArea p {
+    font-size: 2.5vw;
+    color: #a9a8a8;
+}
+
+.inputArea {
+    width: 100%;
+    height: 15vw;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    padding: 0 4vw;
+    gap: 5vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 1vw 2vw;
+}
+
+
+
+.inputContentWrap {
+    width: 70vw;
+    height: 100%;
+    display: flex;
+}
+
+.inputContentWrap input {
+    width: 100%;
+    height: 90%;
+    background: #e9eef1;
+    border-radius: 10px;
+    outline: none;
+    padding: 2vw 4vw;
+}
+
+.inputBtn {
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputBtnItem {
+    width: 100%;
+    height: 75%;
+    background: #6e50ff;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+.inputWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.label {
+    width: 80%;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(20, 22, 23);
+    margin-bottom: 10px;
+}
+
+.input {
+    width: 80%;
+    height: 56px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(215, 224, 230);
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(20, 22, 23);
+    outline: none;
+}
+
+.input::placeholder {
+    color: #d7e0e6;
+}
