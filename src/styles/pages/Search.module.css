@@ -1,0 +1,146 @@
+.searchWrap {
+    padding: 6vw;
+}
+
+.searchHeader {
+    display: flex;
+    align-items: center;
+}
+
+.headerLeftImg {
+    width: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.headerLeftImg img {
+    height: 7vw;
+}
+
+.headerInputArea {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerInputArea input {
+    width: 90%;
+    outline: none;
+    border-radius: 6px;
+    padding: 2vw 4vw;
+    background: rgb(246, 249, 250);
+    font-size: 4vw;
+}
+
+.headerRightImg {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.headerRightImg img {
+    height: 7vw;
+}
+
+.searchArea {
+    padding: 8vw 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchLeftArea {
+    width: 45%;
+}
+
+.searchRightArea {
+    width: 45%;
+}
+
+.historyKeywordArea {
+
+}
+
+.historyKeyword {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vw 0;
+    cursor: pointer;
+}
+
+.historyKeywordLeft {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    font-size: 4vw;
+}
+
+.historyKeywordLeft img {
+    height: 5vw;
+}
+
+.historyKeywordRight {
+
+}
+
+.historyKeywordRight p {
+    font-size: 5vw;
+}
+
+.searchTitle {
+    font-weight: 600;
+    margin-bottom: 3vw;
+    font-size: 4vw;
+}
+
+.suggestionArea {
+    margin-bottom: 4vw;
+}
+
+.suggestionWrap {
+    padding: 2vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5vw;
+}
+
+.suggestItem {
+    padding: 2vw 3vw;
+    border-radius: 12px;
+    background: #eceafa;
+    color: #333;
+    font-size: 4vw;
+    cursor: pointer;
+}
+
+.category {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.categoryArea {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5vw;
+}
+
+.categoryAreaWrap {
+    width: calc(100% / 5);
+    position: relative;
+}
+
+.defaultMsg {
+    padding: 4vw 0;
+    font-size: 3vw;
+    color: #adb3b6;
+}
+
+.historyKeywordRight .historyKeywordCount {
+    font-size: 3vw;
+    color: #adb3b6;
+}

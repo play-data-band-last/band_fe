@@ -17,7 +17,7 @@ const ClassDetailChat = (props) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.0.229:9090/api/v1/chattings', {
+        const response = await axios.get('http://172.30.1.17:9090/api/v1/chattings', {
           params: {
             communityId: props.communitiyId
           }
@@ -33,7 +33,7 @@ const ClassDetailChat = (props) => {
 
     fetchDataInterval = setInterval(() => {
       setTimeData((prevTimeData) => !prevTimeData);
-    }, 500000);
+    }, 3000);
 
     return () => {
        clearInterval(fetchDataInterval);
@@ -94,7 +94,9 @@ const ClassDetailChat = (props) => {
             <div key={idx}>
               {item.memberId !== isLogin.userSeq ? (<div className={classes.chattingItem}>
                                                 <div className={classes.chattingImg}>
-                                                  <div className={classes.img}></div>
+                                                  <div className={classes.img}>
+                                                    <img src={item.memberImage} />
+                                                  </div>
                                                 </div>
                                                 <div className={classes.chatRight}>
                                                   <p className={classes.name}>

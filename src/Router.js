@@ -13,6 +13,7 @@ import CreateSchedule from "./components/pages/section/CreateSchedule";
 import CreateBoard from "./components/pages/section/CreateBoard";
 import CreateAlbum from "./components/pages/section/CreateAlbum";
 import ModifyInfo from "./components/pages/section/ModifyInfo";
+import Search from "./components/pages/section/Search";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
   {
     path : '/modifyInfo',
     element : <ModifyInfo />,
+  },
+  {
+    path : '/modifyInfo',
+    element : <ModifyInfo />,
+  },
+  {
+    path : '/search',
+    element : <Search />,
   },
 
 ]);

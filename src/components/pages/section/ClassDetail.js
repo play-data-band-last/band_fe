@@ -238,7 +238,7 @@ const ClassDetail = () => {
       //height: 'auto'
     },
     {
-      el : <ClassDetailBoard findByCommunityBoardService={findByCommunityBoardService} communitiyId={communitiyId} communityBoards={communityBoards} />,
+      el : <ClassDetailBoard setIsMsgPopupOpen={setIsMsgPopupOpen} findByCommunityBoardService={findByCommunityBoardService} communitiyId={communitiyId} communityBoards={communityBoards} />,
       //height: '100%'
     },
     {

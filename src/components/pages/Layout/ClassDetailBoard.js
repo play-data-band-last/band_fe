@@ -45,7 +45,14 @@ const ClassDetailBoard = (props) => {
   }
 
   const writeComment = (data) => {
+    if (comment == '') {
+      props.setIsMsgPopupOpen({ show: true, msg: '내용을 입력해 주세요.'});
+      return ;
+    }
+
       setLoading(true);
+
+
 
       setTimeout(() => {
         setLoading(false);
