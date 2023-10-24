@@ -21,6 +21,8 @@ const Search = () => {
   const [observer, setObserver] = useState(false);
   const [sortedData, setSortedData] = useState([]);
   const [searchSuggest, setSearchSuggest] = useState([]);
+  const [suggestBool, setSuggestBool] = useState(false);
+  const [suggestTypoText, setSuggestTypoText] = useState('');
 
   const backHandler = () => {
     nav('/main');
@@ -34,11 +36,31 @@ const Search = () => {
       setLoading(false);
     }, 500);
   }
-
+  // http://localhost:8080/api/v1/search/typoSuggestKeywords?name=제왕갈
   const searchFunc = () => {
     postRealTimeKeyWord();
     setSearchText('');
+    setSearchSuggest([]);
 
+    // 오탈자 추천 검색어 쪽 함수..
+    typoSuggestKeywords();
+
+    // localStorage 쪽 최근 검색어 함수..
+    historyKeywordFunc();
+  }
+
+  const typoSuggestKeywords = () => {
+    setSuggestBool(!suggestBool);
+
+    axios.get(`http://localhost:8080/api/v1/search/typoSuggestKeywords?name=${searchText}`)
+      .then((res) => {
+        setSuggestTypoText(res.data[0].key);
+      }).catch((err) => {
+        console.log(err);
+    })
+  }
+
+  const historyKeywordFunc = () => {
     // 로컬 스토리지에서 기존 검색 기록을 가져옴.. 기존 기록이 없으면 빈 배열을 생성..
     const existingHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
@@ -113,7 +135,7 @@ const Search = () => {
             </div>
             <div className={classes.headerInputArea}>
               <input value={searchText} placeholder="검색어 입력" onKeyDown={handleInputKeyDown} onChange={textHandler} />
-              {searchSuggest.length != 0 && <div className={classes.suggestToolTip}>
+              {searchSuggest.length != 0 && <div style={{height : searchSuggest.length > 5 ?'60vw' : 'auto', overflowY : searchSuggest.length > 5 ? 'scroll' : 'auto'}} className={classes.suggestToolTip}>
                 {searchSuggest.map((item, idx) => (
                   <div key={idx} className={classes.suggestToolTipItem}>
                     <img src={hot} />
@@ -121,12 +143,12 @@ const Search = () => {
                   </div>
                 ))}
               </div>}
-
             </div>
             <div className={classes.headerRightImg} onClick={handleHeaderRightImgClick}>
               <img src={search} />
             </div>
           </div>
+          {suggestTypoText != '' && <p className={classes.suggestText}>다음 검색어에 대한 결과 포함 : <span>{suggestTypoText}</span></p>}
           <div className={classes.searchArea}>
             <div className={classes.searchLeftArea}>
               <HistoryKeyWord observer={observer} />
@@ -135,6 +157,7 @@ const Search = () => {
               <SearchRealTimeKeyWord sortedData={sortedData} />
             </div>
           </div>
+          {/*가지고놀때 수정하자*/}
           <div className={classes.suggestionArea}>
             <SuggestionKeyWord />
           </div>

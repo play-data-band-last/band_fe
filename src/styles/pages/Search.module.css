@@ -5,6 +5,7 @@
 .searchHeader {
     display: flex;
     align-items: center;
+    margin-bottom: 4vw;
 }
 
 .headerLeftImg {
@@ -81,7 +82,7 @@
 }
 
 .searchArea {
-    padding: 8vw 0;
+    padding: 6vw 0 8vw 0;
     display: flex;
     justify-content: space-between;
 }
@@ -130,7 +131,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1vw;
 }
 
 .historyKeywordRight p {
@@ -186,7 +186,7 @@
 }
 
 .historyKeywordRight .historyKeywordCount {
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: #adb3b6;
 }
 
@@ -204,4 +204,19 @@
     left : 50%;
     transform : translate(-50%, -50%);
     font-size: 24px;
+}
+
+.suggestText {
+    font-size: 3.5vw;
+}
+
+.suggestText:hover span {
+    font-weight: 600;
+}
+
+.suggestText span {
+    color: #1877f2;
+    font-style: italic;
+    cursor: pointer;
+    text-decoration: underline;
 }
