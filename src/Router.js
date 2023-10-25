@@ -14,6 +14,7 @@ import CreateBoard from "./components/pages/section/CreateBoard";
 import CreateAlbum from "./components/pages/section/CreateAlbum";
 import ModifyInfo from "./components/pages/section/ModifyInfo";
 import Search from "./components/pages/section/Search";
+import SearchResult from "./components/pages/section/SearchResult";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
   {
     path : '/search',
     element : <Search />,
+  },
+  {
+    path : '/searchResult',
+    element : <SearchResult />,
   },
 
 ]);

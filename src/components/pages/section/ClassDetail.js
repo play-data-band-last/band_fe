@@ -397,7 +397,7 @@ const ClassDetail = () => {
             <div className={myClasses.back} onClick={backHandler}>
               <img src={back} />
             </div>
-            <h2>{communityInfo.description}</h2>
+            <h2>{communityInfo.name}</h2>
             <div className={myClasses.iconWrap}>
               <div className={myClasses.heart}>
                 {heartFill && <img onClick={likeCancelHandler} src={heartFillImg} />}

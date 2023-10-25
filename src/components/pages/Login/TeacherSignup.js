@@ -93,7 +93,7 @@ const TeacherSignup = () => {
     })
 
 
-    // axios.post('http://localhost:8000/api/v1/user', {
+    // axios.post('http://192.168.0.229:8000/api/v1/user', {
     //   email : teacherLoginInfo.email,
     //   password : userPass,
     //   name : teacherLoginInfo.username,

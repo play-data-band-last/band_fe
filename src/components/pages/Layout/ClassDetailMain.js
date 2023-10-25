@@ -115,7 +115,7 @@ const ClassDetailMain = (props) => {
           </div>
 
           <div className={myClasses.descArea}>
-            <h2>{props.communityInfo.description}</h2>
+            <h2>{props.communityInfo.name}</h2>
 
             <p className={myClasses.descAreaParam}>{props.communityInfo.description}</p>
 

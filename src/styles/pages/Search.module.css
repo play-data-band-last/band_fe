@@ -208,6 +208,7 @@
 
 .suggestText {
     font-size: 3.5vw;
+    padding: 2vw 0;
 }
 
 .suggestText:hover span {
@@ -215,8 +216,28 @@
 }
 
 .suggestText span {
-    color: #1877f2;
+    color: #6e50ff;
     font-style: italic;
     cursor: pointer;
     text-decoration: underline;
+}
+
+.searchResultArea {
+    padding-top: 5vw;
+}
+
+.resultTitle {
+    margin-bottom: 4vw;
+}
+
+.resultTitle span {
+    font-size: 4vw;
+    color: #6e50ff;
+    font-weight: 600;
+}
+
+.notData {
+    padding: 10vw;
+    color: #adb3b6;
+    text-align: center;
 }
