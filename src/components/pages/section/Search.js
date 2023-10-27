@@ -12,6 +12,7 @@ import Category from "../../blocks/Category";
 import Loading from "../../atoms/Loading";
 import axios from "axios";
 import {Mobile, PC} from "../../config/Responsive";
+import {interestCommunityGet} from "../../../common/api/ApiGetService";
 
 const Search = () => {
   const nav = useNavigate();
@@ -29,10 +30,16 @@ const Search = () => {
 
   const categoryClickMethod = (menuName) => {
     setLoading(true);
-    setSelectMenuName(menuName);
 
     setTimeout(() => {
       setLoading(false);
+      setSelectMenuName(menuName);
+
+      // 쿼리 스트링 형태로 두 개의 파라미터 생성 -> encodeURIComponent 사용해서 특수문자도 안전하게 변환
+      const queryString = `interest=${encodeURIComponent(menuName)}`;
+
+      // 두 번째 파라미터로 쿼리 스트링 전달하여 페이지 이동
+      nav(`/searchResult?${queryString}`);
     }, 500);
   }
 
@@ -138,8 +145,6 @@ const Search = () => {
     }).catch((err) => {
       console.log(err);
     });
-
-
   }
 
   return (

@@ -3,17 +3,13 @@ import classes from '../../../styles/pages/Search.module.css';
 import back from '../../../asset/images/back.png';
 import hot from '../../../asset/images/hot.png';
 import search from '../../../asset/images/search.png';
-import {useLocation, useNavigate, useParams} from "react-router-dom";
-import SearchRealTimeKeyWord from "../../blocks/SearchRealTimeKeyWord";
-import HistoryKeyWord from "../../blocks/HistoryKeyWord";
-import SuggestionKeyWord from "../../blocks/SuggestionKeyWord";
-import {categoryMenu} from "../../../common/Menus";
-import Category from "../../blocks/Category";
+import {useLocation, useNavigate} from "react-router-dom";
 import Loading from "../../atoms/Loading";
 import axios from "axios";
 import {Mobile, PC} from "../../config/Responsive";
 import SuggestComunity from "../../blocks/SuggestComunity";
 import {saveToLocalStorage} from "../../../common/CommonFunc";
+import {interestCommunityGet} from "../../../common/api/ApiGetService";
 
 const SearchResult = () => {
   const nav = useNavigate();
@@ -25,19 +21,55 @@ const SearchResult = () => {
   const searchParams = new URLSearchParams(location.search);
   const [keyword, setKeyword] = useState(searchParams.get("keyword"));
   const [sugKeyword, setSugKeyword] = useState(searchParams.get("sug"));
+  const [interest, setInterest] = useState(searchParams.get("interest"));
+  const [page, setPage] = useState(0);
+  const [menuName, setMenuName] = useState('');
   const [communityList, setCommunityList] = useState([]);
+
   const backHandler = () => {
     nav('/search');
   }
+
+  const searchInterest = (menuName) => {
+    setLoading(false);
+    setMenuName(menuName);
+    interestCommunityGet(menuName, 0, 10).then((res) => {
+
+      if(res.status === 200) {
+        const newData = res.data.content;
+        setCommunityList(newData);
+      }
+
+    }).catch((err) => {
+
+    })
+  }
+
 
   useEffect(() => {
     setLoading(true);
 
     setTimeout(() => {
 
-      searchCommunitys(keyword);
+      if (keyword != null) {
+        searchCommunitys(keyword);
+        return ;
+      }
+
+      if (interest != null) {
+        searchInterest(interest)
+        return ;
+      }
+
 
     }, 700);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      // 컴포넌트 언마운트 시 스크롤 이벤트 리스너 제거
+      window.removeEventListener('scroll', handleScroll);
+    };
 
   }, []);
 
@@ -203,6 +235,33 @@ const SearchResult = () => {
 
   }
 
+  const handleScroll = () => {
+    // 스크롤 위치 계산
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // 스크롤이 페이지 하단에 도달
+    if (scrollTop + windowHeight + 1 >= documentHeight) {
+      setPage(page + 1);
+      setLoading(true);
+
+        setTimeout(() => {
+          setLoading(false);
+          interestCommunityGet(menuName, page, 5).then((res) => {
+            if(res.status === 200) {
+              const newData = res.data.content;
+              setCommunityList(prevData => [...prevData, ...newData]);
+            }
+
+          }).catch((err) => {
+
+          })
+        }, 500);
+      }
+
+  };
+
   return (
     <>
       <PC>
@@ -234,7 +293,7 @@ const SearchResult = () => {
           {(keyword != sugKeyword && sugKeyword != '' && sugKeyword != null) && <p onClick={searchTextFunc} className={classes.suggestText}>검색어에 대한 추천 검색어 : <span>{sugKeyword}</span></p>}
 
           <div className={classes.searchResultArea}>
-            <h2 className={classes.resultTitle}><span>{keyword}</span> (으)로 검색하신 결과</h2>
+            <h2 className={classes.resultTitle}><span>{keyword != null ? keyword : interest}</span> (으)로 검색하신 결과</h2>
             {communityList.length == 0 ? <p className={classes.notData}>검색 결과가 없습니다.</p> : communityList.map((item, idx) => (
               <SuggestComunity padding="search" data={item} key={idx} onClick={() => goToDetail(item)} />
             ))}

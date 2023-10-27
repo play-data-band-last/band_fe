@@ -70,6 +70,7 @@ const MyClass = () => {
     findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
         setMyCommunity(res.data);
+        const communityIds = res.data.map((item) => item.communityId);;
       }
     }).catch((err) => {
 

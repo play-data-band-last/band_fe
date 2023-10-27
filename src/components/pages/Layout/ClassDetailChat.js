@@ -3,6 +3,7 @@ import classes from "../../../styles/pages/ClassDetailChat.module.css";
 import axios from "axios";
 import {userChatMsg} from "../../../common/api/ApiPostService";
 import {useSelector} from "react-redux";
+import WebSocketComponent from "../../../common/WebSocketComponent";
 
 const ClassDetailChat = (props) => {
 
@@ -29,7 +30,7 @@ const ClassDetailChat = (props) => {
       }
     };
 
-    fetchData();
+    // fetchData();
 
     fetchDataInterval = setInterval(() => {
       setTimeData((prevTimeData) => !prevTimeData);
