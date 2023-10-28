@@ -29,13 +29,15 @@ const WebSocketComponent = () => {
       console.log('Connected to WebSocket');
       setStompClient(stomp);
 
-      communityIds.map((item, idx) => {
-        stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
-          // 메시지가 도착했을 때 실행될 코드
-          console.log(JSON.parse(message.body));
-        });
+      // communityIds.map((item, idx) => {
+      //   stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
+      //     // 메시지가 도착했을 때 실행될 코드
+      //     console.log(JSON.parse(message.body));
+      //   });
+      // })
+      stomp.subscribe(`/topic/${userInfo.userSeq % 3}`, (message) => {
+        console.log(message)
       })
-
     });
 
     // 컴포넌트가 언마운트될 때 WebSocket 연결 해제
