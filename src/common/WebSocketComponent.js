@@ -5,8 +5,9 @@ import {findByMyCommunity} from "./api/ApiGetService";
 import {useSelector} from "react-redux";
 import axios from "axios";
 
-const WebSocketComponent = () => {
+const WebSocketComponent = (props) => {
   const [stompClient, setStompClient] = useState(null);
+  const [communityIds, setCommunityIds] = useState(props.communityIds);
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const WebSocketComponent = () => {
 
     findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
-        communityIds = res.data.map((item) => item.communityId);;
+        communityIds = res.data.map((item) => item.communityId);
       }
     }).catch((err) => {
 
@@ -28,7 +29,7 @@ const WebSocketComponent = () => {
 
     // WebSocket 연결 설정
     // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
-    const socket = new SockJS(`http://localhost:9000/stomp-endpoint-0`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://localhost:9100/stomp-endpoint-0`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
     stomp.connect({}, (frame) => {
@@ -42,10 +43,11 @@ const WebSocketComponent = () => {
       //     console.log(JSON.parse(message.body));
       //   });
       // });
-
+      console.log(communityIds)
       communityIds.map((item, idx) => {
         stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
           // 메시지가 도착했을 때 실행될 코드
+          props.socketData(JSON.parse(message.body));
           console.log(JSON.parse(message.body));
         });
       })

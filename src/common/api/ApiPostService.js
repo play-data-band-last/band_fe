@@ -98,3 +98,10 @@ export const modifyUserInfo = (email, password, name, mbti, imgPath, token) => a
     'Authorization' : token
   }
 });
+
+export const getMemberNotify = (communityIds, page, size) => apiClient.post('/api/v1/notify/community', communityIds, {
+  params : {
+    page,
+    size
+  }
+});
