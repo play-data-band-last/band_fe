@@ -50,6 +50,12 @@ const Header = () => {
     //
     // })
 
+    const eventSource = new EventSource('http://localhost:9100/notifications/subscribe/1');
+
+    eventSource.addEventListener('sse', event => {
+      console.log(event);
+    });
+
     findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
         communityIds = res.data.map((item) => item.communityId);
