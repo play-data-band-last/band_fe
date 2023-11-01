@@ -3,6 +3,7 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import {findByMyCommunity} from "./api/ApiGetService";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 const WebSocketComponent = () => {
   const [stompClient, setStompClient] = useState(null);
@@ -19,15 +20,28 @@ const WebSocketComponent = () => {
 
     })
 
+    // const calcUserNum = userInfo.userSeq % 3;
+    //
+    // console.log(calcUserNum)
+    //
+
 
     // WebSocket 연결 설정
-    const socket = new SockJS('http://localhost:8081/stomp-endpoint'); // WebSocket 서버 주소
+    // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://localhost:9000/stomp-endpoint-0`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
-    stomp.connect({}, () => {
-      // 연결이 성공하면 실행될 코드
+    stomp.connect({}, (frame) => {
+      // 연결 성공 시 실행될 코드
       console.log('Connected to WebSocket');
       setStompClient(stomp);
+
+      // communityIds.map((item, idx) => {
+      //   stomp.subscribe(`/topic/notify/userId/${userInfo.userSeq}`, (message) => {
+      //     // 메시지가 도착했을 때 실행될 코드
+      //     console.log(JSON.parse(message.body));
+      //   });
+      // });
 
       communityIds.map((item, idx) => {
         stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
@@ -35,7 +49,10 @@ const WebSocketComponent = () => {
           console.log(JSON.parse(message.body));
         });
       })
-
+    }, (error) => {
+      // 연결 실패 시 실행될 코드
+      // 에러 처리 로직 추가
+      console.log('연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨')
     });
 
     // 컴포넌트가 언마운트될 때 WebSocket 연결 해제
