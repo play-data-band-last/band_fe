@@ -23,6 +23,7 @@ const CreateCommunity = () => {
   const [userDesc, setUserDesc] = useState('');
   const [userImg, setUserImg] = useState('');
   const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState('');
   const [category, setCategory] = useState('');
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: '', gb : 0});
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState({show : false, msg: ''});
@@ -41,7 +42,7 @@ const CreateCommunity = () => {
     setLoading(true);
 
     setTimeout(() => {
-      createCommunity(userInfo.userSeq, userInfo.username, userLocation, userCateSub, category, userDesc, userImg).then((res) => {
+      createCommunity(userInfo.userSeq, userName, userLocation, userCateSub, category, userDesc, userImg).then((res) => {
         setIsMsgPopupOpen({show: true, msg: '모임이 등록 되었습니다.', gb : '1'});
         setLoading(false);
       }).catch((err) => {
@@ -83,6 +84,10 @@ const CreateCommunity = () => {
     setUserImg(e.target.value);
   }
 
+  const nameHandler = (e) => {
+    setUserName(e.target.value);
+  }
+
 
   return (
     <div>
@@ -100,9 +105,10 @@ const CreateCommunity = () => {
 
 
         <div className={classes.inputArea}>
+          <Input onChange={nameHandler} placeholder="달리자 러닝 크루!" value="소모임 이름" type="text" />
           <Input onChange={locationHandler} placeholder="서울" value="소모임 지역" type="text" />
           <Input onChange={categorySubHandler} placeholder="러닝 모임" value="소모임 목적" type="text" />
-          <Input onChange={descHandler} placeholder="댄스를 좋아하는 모임입니다." value="소모임 내용" type="text" />
+          <Input onChange={descHandler} placeholder="러닝을 좋아하는 모임입니다." value="소모임 내용" type="text" />
           <Input onChange={imgHandler} placeholder="이미지 URL" value="소모임 이미지" type="text" />
 
 

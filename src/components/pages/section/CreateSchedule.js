@@ -8,23 +8,17 @@ import Button from "../../atoms/Button";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
 import ConfirmPopup from "../../blocks/ConfirmPopup";
-import {passCheck} from "../../../common/Reg";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import CategorySelect from "../../blocks/CategorySelect";
-import {categoryMenu} from "../../../common/Menus";
-import {createCommunity, createSchedule} from "../../../common/api/ApiPostService";
+import {createSchedule} from "../../../common/api/ApiPostService";
 
 const CreateSchedule = () => {
-  const [userFile, setUserFile] = useState('');
   const [userLocation, setUserLocation] = useState('');
   const [userCateSub, setUserCateSub] = useState('');
   const [userDesc, setUserDesc] = useState('');
   const [userImg, setUserImg] = useState('');
   const [userImg2, setUserImg2] = useState('');
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState('');
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: '', gb : 0});
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState({show : false, msg: ''});
   const nav = useNavigate();
@@ -109,7 +103,7 @@ const CreateSchedule = () => {
       </PC>
       <Mobile>
         <div className={classes.signUpPageWrap}>
-          <img className={classes.signUpPageLogo} src={mainLogo} />
+          <img className={classes.signUpPageLogo} alt={mainLogo} src={mainLogo} />
         </div>
 
         <h2 style={{fontSize : '4vw', textAlign : 'center', fontWeight : '600', marginBottom : '5vw'}}>생성할 일정의 정보를 입력해 주세요.</h2>

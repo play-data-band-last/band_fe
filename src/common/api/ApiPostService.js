@@ -43,7 +43,7 @@ export const communityInsert = (communityId, memberId, memberName, memberRole, m
   communityId
 })
 
-export const userChatMsg = (communityId, memberId, memberName, memberImage, content) => apiClient.post('http://192.168.0.229:9090/api/v1/chattings', {
+export const userChatMsg = (communityId, memberId, memberName, memberImage, content) => apiClient.post('http://172.30.1.17:9090/api/v1/chattings', {
   communityId,
   memberId,
   memberName,
@@ -96,5 +96,12 @@ export const modifyUserInfo = (email, password, name, mbti, imgPath, token) => a
 }, {
   headers : {
     'Authorization' : token
+  }
+});
+
+export const getMemberNotify = (communityIds, page, size) => apiClient.post('/api/v1/notify/community', communityIds, {
+  params : {
+    page,
+    size
   }
 });

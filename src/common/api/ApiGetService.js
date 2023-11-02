@@ -39,7 +39,8 @@ export const findByCommunityComments = (targetId) => apiClient.get(`/api/v1/comm
 export const findByCommunityMember = (communityId) => apiClient.get(`/api/v1/communitymember/communityid/${communityId}`);
 export const findByTeacherLoginIngo = (userEmail) => apiClient.get(`/api/v1/user/teacherAccountInfo/${userEmail}`);
 
-export const findByScheduleMember = (scheduleId) => apiClient.get(`http://192.168.0.229:8000/api/v1/schedule/schedule/${scheduleId}`);
+export const findByScheduleMember = (scheduleId) => apiClient.get(`/api/v1/schedule/schedule/${scheduleId}`);
+
 
 
 
