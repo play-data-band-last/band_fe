@@ -11,7 +11,8 @@ export const login = async (userId, userPwd) => {
     mbti : null,
     token : null,
     userSeq : null,
-    interest : []
+    interest : [],
+    location : null
   }
 
   try {
@@ -31,6 +32,7 @@ export const login = async (userId, userPwd) => {
       res.token = jwtToken;
       res.userSeq = response.data.data.userId;
       res.interest = response.data.data.interests;
+      res.location = response.data.data.location;
 
       // 토큰 인증 성공시 모든 API에 기본 요청 토큰 설정..
       apiClient.interceptors.request.use((config) => {

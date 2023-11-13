@@ -62,8 +62,8 @@ export const boardInsert = (communityId, content, memberId, memberName, memberIm
   communityId, content, memberId, memberName, memberImage, title
 })
 
-export const createCommunity = (ownerId, name, location, category, interest, description, profileImage) => apiClient.post('/api/v1/community', {
-  ownerId, name, location, category, interest, description, profileImage
+export const createCommunity = (memberId, memberName, memberImage, communityName, communityImage, location, category, interest, description) => apiClient.post('/api/v1/community', {
+  memberId, memberName, memberImage, communityName, communityImage, location, category, interest, description
 })
 
 export const createSchedule = (communityId, scheduleName, scheduleTime, meetingPlace, price, maxParticipation, interest, memberImage, memberName) => apiClient.post(`/api/v1/schedule/${communityId}`, {
@@ -105,3 +105,8 @@ export const getMemberNotify = (communityIds, page, size) => apiClient.post('/ap
     size
   }
 });
+
+export const userLocationSave = (id, location) => apiClient.put('api/v1/user/location', {
+  id,
+  location
+})

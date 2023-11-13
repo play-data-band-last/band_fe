@@ -11,6 +11,7 @@ import {useSelector} from "react-redux";
 import {findByMyCommunity} from "../../../common/api/ApiGetService";
 import axios from "axios";
 import Loading from "../../atoms/Loading";
+import {userLocationSave} from "../../../common/api/ApiPostService";
 
 const Header = () => {
   const nav = useNavigate();
@@ -29,11 +30,19 @@ const Header = () => {
 
   // 위치 가까운곳..까지 받아오기
   useEffect(() => {
+
+
     if (testLocation) {
       const { latitude, longitude, accuracy } = testLocation;
       setLatitude(latitude);
       setLongitude(longitude);
       setAccuracy(Math.floor(accuracy));
+
+      userLocationSave(userInfo.userSeq, `${latitude}, ${longitude}`).then((res) => {
+        console.log(res.data)
+      }).catch((err) => {
+
+      })
     }
 
   }, [testLocation]);
@@ -50,11 +59,13 @@ const Header = () => {
     //
     // })
 
-    const eventSource = new EventSource('http://localhost:9100/notifications/subscribe/1');
 
-    eventSource.addEventListener('sse', event => {
-      console.log(event);
-    });
+    // sse
+    // const eventSource = new EventSource('http://localhost:8000/notifications/subscribe/1');
+    //
+    // eventSource.addEventListener('sse', event => {
+    //   console.log(event);
+    // });
 
     findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {

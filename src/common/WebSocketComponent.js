@@ -29,12 +29,13 @@ const WebSocketComponent = (props) => {
 
     // WebSocket 연결 설정
     // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
-    const socket = new SockJS(`http://localhost:9100/stomp-endpoint-0`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://192.168.0.229:9100/stomp-endpoint-0`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
     stomp.connect({}, (frame) => {
       // 연결 성공 시 실행될 코드
       console.log('Connected to WebSocket');
+
       setStompClient(stomp);
 
       // communityIds.map((item, idx) => {
@@ -43,18 +44,18 @@ const WebSocketComponent = (props) => {
       //     console.log(JSON.parse(message.body));
       //   });
       // });
-      console.log(communityIds)
+      //console.log(communityIds)
       communityIds.map((item, idx) => {
         stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
           // 메시지가 도착했을 때 실행될 코드
           props.socketData(JSON.parse(message.body));
-          console.log(JSON.parse(message.body));
+          //console.log(JSON.parse(message.body));
         });
       })
     }, (error) => {
       // 연결 실패 시 실행될 코드
       // 에러 처리 로직 추가
-      console.log('연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨연결안됨')
+      console.log('socket disconnect...')
     });
 
     // 컴포넌트가 언마운트될 때 WebSocket 연결 해제

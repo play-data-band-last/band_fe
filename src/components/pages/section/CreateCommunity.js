@@ -40,9 +40,8 @@ const CreateCommunity = () => {
 
   const signupHandler = () => {
     setLoading(true);
-
     setTimeout(() => {
-      createCommunity(userInfo.userSeq, userName, userLocation, userCateSub, category, userDesc, userImg).then((res) => {
+      createCommunity(userInfo.userSeq, userInfo.username, userInfo.profileImgPath,  userName, userImg, userInfo.location, userCateSub, category, userDesc).then((res) => {
         setIsMsgPopupOpen({show: true, msg: '모임이 등록 되었습니다.', gb : '1'});
         setLoading(false);
       }).catch((err) => {

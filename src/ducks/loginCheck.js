@@ -9,6 +9,7 @@ const initialIsLoginState = {
       mbti : null,
       userSeq : null,
       interest : [],
+      location : null
   },
 
   teacherLoginInfo : {

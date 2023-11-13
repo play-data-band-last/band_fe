@@ -375,7 +375,8 @@ const ClassDetail = () => {
           mbti : null,
           token : null,
           userSeq : null,
-          interest : []
+          interest : [],
+          location : null
         }
         dispatch(loginCheckAction.loginInfoSet(res));
         nav('/')

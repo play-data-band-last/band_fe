@@ -8,19 +8,9 @@ import Button from "../../atoms/Button";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
 import ConfirmPopup from "../../blocks/ConfirmPopup";
-import {passCheck} from "../../../common/Reg";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import CategorySelect from "../../blocks/CategorySelect";
-import {categoryMenu} from "../../../common/Menus";
-import {
-  albumInsert,
-  boardInsert,
-  BoardInsert,
-  createCommunity,
-  createSchedule
-} from "../../../common/api/ApiPostService";
+import {albumInsert} from "../../../common/api/ApiPostService";
 
 const CreateAlbum = () => {
   const [userLocation, setUserLocation] = useState('');

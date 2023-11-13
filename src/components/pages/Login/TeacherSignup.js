@@ -77,7 +77,8 @@ const TeacherSignup = () => {
             username : null,
             profileImgPath : null,
             mbti : null,
-            userSeq : res.data.data
+            userSeq : res.data.data,
+            location : null
           }
 
           dispatch(loginCheckAction.loginInfoSet(loginInfo));
