@@ -3,10 +3,14 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import {findByMyCommunity} from "./api/ApiGetService";
 import {useSelector} from "react-redux";
+import {useRecoilState} from "recoil";
+import {CommunityJoinMessage} from "../ducks/recoil";
+
 
 const WebSocketComponent = () => {
   const [stompClient, setStompClient] = useState(null);
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
+  const [communityJoinMessage,setCommunityJoinMessage] = useRecoilState(CommunityJoinMessage);
 
   useEffect(() => {
     let communityIds = [];
@@ -19,6 +23,9 @@ const WebSocketComponent = () => {
 
     })
 
+
+    // const socketUrl = `http://localhost:8081/stomp-endpoint?userId=${userInfo.id}`;
+    // const socket = new SockJS(socketUrl);
 
     // WebSocket 연결 설정
     const socket = new SockJS('http://localhost:8081/stomp-endpoint'); // WebSocket 서버 주소
@@ -36,7 +43,9 @@ const WebSocketComponent = () => {
       //   });
       // })
       stomp.subscribe(`/topic/${userInfo.userSeq % 3}`, (message) => {
-        console.log(message)
+        setCommunityJoinMessage(JSON.parse(message.body))
+        console.log(communityJoinMessage)
+
       })
     });
 

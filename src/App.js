@@ -2,6 +2,8 @@ import './styles/common/Reset.css'
 import {Mobile, PC} from "./components/config/Responsive";
 import classes from "./styles/pages/Main.module.css";
 import Login from "./components/pages/Login/Login";
+import React from 'react';
+
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           </Mobile>
         </main>
       </div>
+
   );
 }
 

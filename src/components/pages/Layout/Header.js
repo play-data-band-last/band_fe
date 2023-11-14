@@ -6,6 +6,7 @@ import useCurrentLocation from "../../../common/useCurrentLocation";
 import positionOptions from "../../../common/positionOptions";
 import {useEffect, useState} from "react";
 import WebSocketComponent from "../../../common/WebSocketComponent";
+import {Alarm} from "../section/Alarm";
 const Header = () => {
   const nav = useNavigate();
   const {testLocation, error} = useCurrentLocation(positionOptions);
@@ -38,7 +39,7 @@ const Header = () => {
         </div>
         <div className={classes.headerRight}>
           <img onClick={goToSearchPage} className={classes.notiImg} src={search} />
-          <img className={classes.notiImg} src={noti} />
+          <img onClick={Alarm} className={classes.notiImg} src={noti} />
         </div>
       </div>
       <WebSocketComponent />
