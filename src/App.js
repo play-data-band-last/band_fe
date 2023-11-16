@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './styles/common/Reset.css'
 import {Mobile, PC} from "./components/config/Responsive";
 import classes from "./styles/pages/Main.module.css";
