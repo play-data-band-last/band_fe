@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import {findByMyCommunity} from "./api/ApiGetService";
 import {useSelector} from "react-redux";
-import axios from "axios";
 
 const WebSocketComponent = (props) => {
   const [stompClient, setStompClient] = useState(null);
-  const [communityIds, setCommunityIds] = useState(props.communityIds);
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
 
   useEffect(() => {
@@ -50,8 +48,11 @@ const WebSocketComponent = (props) => {
           // 메시지가 도착했을 때 실행될 코드
           props.socketData(JSON.parse(message.body));
           //console.log(JSON.parse(message.body));
+
+          // 이 부분에서 반환값을 명시적으로 지정하거나, 값을 반환하지 않아도 됩니다.
+          return null; // 또는 원하는 값을 반환하거나, 아무 값도 반환하지 않음
         });
-      })
+      });
     }, (error) => {
       // 연결 실패 시 실행될 코드
       // 에러 처리 로직 추가
@@ -64,7 +65,7 @@ const WebSocketComponent = (props) => {
         stompClient.disconnect();
       }
     };
-  }, []); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
+  }, [props, stompClient, userInfo.userSeq]); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
 
   return (
     <div>

@@ -19,7 +19,6 @@ const Header = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
-  const [communityIds, setCommunityIds] = useState([]);
   const [showNotify, setShowNotify] = useState(false);
   const [notifyList, setNotifyList] = useState([]);
   const [notifyListLength, setNotifyListLength] = useState(0);
@@ -45,7 +44,7 @@ const Header = () => {
       })
     }
 
-  }, [testLocation]);
+  }, [userInfo.userSeq, testLocation]);
 
   useEffect(() => {
     let communityIds = [];
@@ -76,7 +75,7 @@ const Header = () => {
             size : 100
           }
         }).then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             const filteredData = res.data.content.filter(item => item.memberId !== userInfo.userSeq);
             const filteredData2 = res.data.content.filter(item => !item.read && item.memberId !== userInfo.userSeq);
             setNotifyListLength(filteredData2.length);
@@ -90,7 +89,7 @@ const Header = () => {
 
     })
 
-  }, [observer]);
+  }, [userInfo.userSeq, observer]);
 
 
   const handleClickOutside = useCallback((event) => {
@@ -155,7 +154,7 @@ const Header = () => {
   }
 
   const formatDate = (originalDate) => {
-    if (originalDate == undefined) {
+    if (originalDate === undefined) {
       return '';
     }
     const parsedDate = new Date(originalDate);
@@ -194,30 +193,30 @@ const Header = () => {
     <header>
       <div className={classes.headerWrap}>
         <div style={{position :'relative'}} className={classes.headerLeft}>
-          {accuracy != 0 && <p className={classes.headerLeftText}>{`${latitude}, ${longitude}`}</p>}
-          {accuracy != 0 && <span style={{position : 'absolute', top: '6vw', left : '0', color : '#adb3b6', fontSize : '3vw'}}>{`약 ${accuracy.toLocaleString()} M 차이가 있습니다.`}</span>}
-          {accuracy == 0 && <p>위치 찾는 중..</p>}
+          {accuracy !== 0 && <p className={classes.headerLeftText}>{`${latitude}, ${longitude}`}</p>}
+          {accuracy !== 0 && <span style={{position : 'absolute', top: '6vw', left : '0', color : '#adb3b6', fontSize : '3vw'}}>{`약 ${accuracy.toLocaleString()} M 차이가 있습니다.`}</span>}
+          {accuracy === 0 && <p>위치 찾는 중..</p>}
         </div>
         <div className={classes.headerRight}>
-          <img onClick={goToSearchPage} className={classes.notiImg} src={search} />
-          <img onClick={showNotifyToolTip} className={classes.notiImg} src={noti} />
+          <img alt='img' onClick={goToSearchPage} className={classes.notiImg} src={search} />
+          <img alt='img' onClick={showNotifyToolTip} className={classes.notiImg} src={noti} />
           {/*{notifyList.length != 0 && <div onClick={showNotifyToolTip} className={classes.notifyLength}>*/}
           {/*  <p>{notifyList.length}</p>*/}
           {/*</div>}*/}
-          {notifyListLength != 0 &&<div onClick={showNotifyToolTip} className={classes.notifyLength}>
+          {notifyListLength !== 0 &&<div onClick={showNotifyToolTip} className={classes.notifyLength}>
             <p>{notifyListLength}</p>
           </div>}
           <div ref={toolTipRef} className={classes.notifyArea}>
-            {notifyList.length != 0 ?notifyList.map((item, idx) => (
+            {notifyList.length !== 0 ?notifyList.map((item, idx) => (
               <div onClick={() => {readChange(item)}} key={idx} className={classes.notifyAreaItem}>
                 <div className={classes.notifyAreaItemLeft}>
                   <div className={classes.notifyAreaItemLeftImg}>
-                    <img src={item.memberProfileImg} />
+                    <img alt='img' src={item.memberProfileImg} />
                   </div>
                 </div>
                 <div className={classes.notifyAreaItemRight}>
                   <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
-                  {item.read != false ? <img src={check} className={classes.checkImg} /> : ''}
+                  {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
                 </div>
               </div>
             )) : <p className={classes.notNotify}>알림 내역이 없습니다.</p>}

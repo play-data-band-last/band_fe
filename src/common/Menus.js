@@ -7,14 +7,11 @@ import eng from "../asset/images/eng.png";
 import show from "../asset/images/show.png";
 import make from "../asset/images/make.png";
 import dance from "../asset/images/dance.png";
-import donation from "../asset/images/donation.png";
 import car from "../asset/images/car.png";
 import coffee from "../asset/images/coffee.png";
 import camera from "../asset/images/cam.png";
-import baseball from "../asset/images/baseball.png";
 import game from "../asset/images/play.png";
 import cook from "../asset/images/cook.png";
-import dog from "../asset/images/dog.png";
 
 export const categoryMenu = [
     {

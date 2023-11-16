@@ -5,7 +5,6 @@ import Button from "../../atoms/Button";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Loading from "../../atoms/Loading";
-import axios from "axios";
 import {loginCheckAction} from "../../../ducks/loginCheck";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
@@ -36,7 +35,7 @@ const Login = () => {
     }
 
     window.scrollTo(0, 0);
-  }, []);
+  }, [isLogin, nav]);
   const signUpMethods = () => {
 
     setLoading(true);
@@ -125,7 +124,7 @@ const Login = () => {
   return (
     <div>
       <div className={classes.mainPageWrap}>
-        <img className={classes.mainPageLogo} src={mainLogo} />
+        <img alt='img' className={classes.mainPageLogo} src={mainLogo} />
       </div>
       <div className={classes.inputArea}>
         <Input onChange={emailHandler} placeholder="example@email.com" value="아이디(이메일)" type="text" />

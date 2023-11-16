@@ -8,27 +8,18 @@ import Button from "../../atoms/Button";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
 import ConfirmPopup from "../../blocks/ConfirmPopup";
-import {passCheck} from "../../../common/Reg";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import CategorySelect from "../../blocks/CategorySelect";
-import {categoryMenu} from "../../../common/Menus";
-import {boardInsert, BoardInsert, createCommunity, createSchedule} from "../../../common/api/ApiPostService";
+import {boardInsert} from "../../../common/api/ApiPostService";
 
 const CreateBoard = () => {
   const [userLocation, setUserLocation] = useState('');
   const [userCateSub, setUserCateSub] = useState('');
-  const [userDesc, setUserDesc] = useState('');
-  const [userImg, setUserImg] = useState('');
-  const [userImg2, setUserImg2] = useState('');
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState('');
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: '', gb : 0});
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState({show : false, msg: ''});
   const nav = useNavigate();
   const [communityId, setCommunityId] = useState('');
-  const [communityInterest, setCommunityInterest] = useState('');
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
 
   useEffect(() => {
@@ -83,16 +74,7 @@ const CreateBoard = () => {
   const categorySubHandler = (e) => {
     setUserCateSub(e.target.value);
   }
-  const descHandler = (e) => {
-    setUserDesc(e.target.value);
-  }
-  const imgHandler = (e) => {
-    setUserImg(e.target.value);
-  }
 
-  const imgHandler2 = (e) => {
-    setUserImg2(e.target.value);
-  }
 
 
   return (
@@ -104,7 +86,7 @@ const CreateBoard = () => {
       </PC>
       <Mobile>
         <div className={classes.signUpPageWrap}>
-          <img className={classes.signUpPageLogo} src={mainLogo} />
+          <img alt='img' className={classes.signUpPageLogo} src={mainLogo} />
         </div>
 
         <h2 style={{fontSize : '4vw', textAlign : 'center', fontWeight : '600', marginBottom : '5vw'}}>생성할 게시글의 정보를 입력해 주세요.</h2>
