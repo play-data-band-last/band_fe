@@ -11,7 +11,7 @@ function App() {
         <main>
           <PC>
             <div className={classes.pcWrap} >
-              <p className={classes.pcWrapInner}>화면을 550px 이하로 줄여</p>
+              <p className={classes.pcWrapInner}>화면을 550px 이하로 줄여주세요.</p>
             </div>
           </PC>
           <Mobile>
