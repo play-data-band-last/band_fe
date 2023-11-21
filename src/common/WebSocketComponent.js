@@ -21,7 +21,7 @@ const WebSocketComponent = (props) => {
 
     // WebSocket 연결 설정
     // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
-    const socket = new SockJS(`http://104.197.46.54/stomp-endpoint-0`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://localhost:8000/stomp-endpoint-0`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
     stomp.connect({}, (frame) => {
@@ -50,7 +50,7 @@ const WebSocketComponent = (props) => {
     }, (error) => {
       // 연결 실패 시 실행될 코드
       // 에러 처리 로직 추가
-      console.log('socket disconnect...')
+      console.log('socket disconnect...');
     });
 
     // 컴포넌트가 언마운트될 때 WebSocket 연결 해제
@@ -59,7 +59,7 @@ const WebSocketComponent = (props) => {
         stompClient.disconnect();
       }
     };
-  }, [props, stompClient, userInfo.userSeq]); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
+  }, [props, userInfo.userSeq]); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
 
   return (
     <div>
