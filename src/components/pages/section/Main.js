@@ -57,11 +57,12 @@ const Main = () => {
     const array = [];
 
     // arr에 저장..
-    userInfo.interest.forEach((item, idx) => {
-      array.push(item.interest);
-    })
+    // userInfo.interest.forEach((item, idx) => {
+    //   array.push(item.interest);
+    // })
 
-    userRecommandCommunity(array, page, size).then((res) => {
+
+    userRecommandCommunity(userInfo.interest, page, size).then((res) => {
 
       if (res.status === 200) {
         if (mainFirstReq) {
@@ -130,13 +131,13 @@ const Main = () => {
         const array = [];
 
         // arr에 저장..
-        userInfo.interest.forEach((item, idx) => {
-          array.push(item.interest);
-        })
+        // userInfo.interest.forEach((item, idx) => {
+        //   array.push(item.interest);
+        // })
 
         setTimeout(() => {
           setLoading(false);
-          interestCommunityScheduleGet(array).then((res) => {
+          interestCommunityScheduleGet(userInfo.interest).then((res) => {
             if(res.status === 200) {
               const newData = res.data;
               setScheduleArray(prevData => [...prevData, ...newData]);
@@ -196,12 +197,12 @@ const Main = () => {
 
 
       // 일반 main 에서 인피니티 스크롤..
-      const array = [];
-      userInfo.interest.forEach((item, idx) => {
-        array.push(item.interest);
-      })
+      // const array = [];
+      // userInfo.interest.forEach((item, idx) => {
+      //   array.push(item.interest);
+      // })
 
-      userRecommandCommunity(array, page, 5).then((res) => {
+      userRecommandCommunity(userInfo.interest, page, 5).then((res) => {
 
         setLoading(true);
 
@@ -229,15 +230,15 @@ const Main = () => {
 
       setLoading(true);
       // 빈 arr 만들어서..
-      const array = [];
-
-      // arr에 저장..
-      userInfo.interest.forEach((item, idx) => {
-        array.push(item.interest);
-      })
+      // const array = [];
+      //
+      // // arr에 저장..
+      // userInfo.interest.forEach((item, idx) => {
+      //   array.push(item.interest);
+      // })
 
       setTimeout(() => {
-        userRecommandCommunity(array, 0, 10).then((res) => {
+        userRecommandCommunity(userInfo.interest, 0, 10).then((res) => {
           setLoading(false);
           if (res.status === 200) {
             setCommunityList(res.data.content);
@@ -260,18 +261,18 @@ const Main = () => {
       setLoading(true);
 
       // 빈 arr 만들어서..
-      const array = [];
-
-      // arr에 저장..
-      userInfo.interest.forEach((item, idx) => {
-        array.push(item.interest);
-      })
+      // const array = [];
+      //
+      // // arr에 저장..
+      // userInfo.interest.forEach((item, idx) => {
+      //   array.push(item.interest);
+      // })
 
       setTimeout(() => {
         setLoading(false);
         setScheduleArea(true);
 
-        interestCommunityScheduleGet(array).then((res) => {
+        interestCommunityScheduleGet(userInfo.interest).then((res) => {
           setScheduleArray(res.data);
         }).catch((err) => {
           console.log(err);
@@ -368,14 +369,14 @@ const Main = () => {
   }
 
   const mainCategoryGet = () => {
-    const array = [];
+    // const array = [];
+    //
+    // // arr에 저장..
+    // userInfo.interest.forEach((item, idx) => {
+    //   array.push(item.interest);
+    // })
 
-    // arr에 저장..
-    userInfo.interest.forEach((item, idx) => {
-      array.push(item.interest);
-    })
-
-    userRecommandCommunity(array, page, size).then((res) => {
+    userRecommandCommunity(userInfo.interest, page, size).then((res) => {
 
       if (res.status === 200) {
         if (mainFirstReq) {
