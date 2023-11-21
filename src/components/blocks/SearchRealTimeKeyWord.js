@@ -14,7 +14,7 @@ const SearchRealTimeKeyWord = (props) => {
   }, [props.sortedData]);
 
   const getRealTimeKeyWord = () => {
-    axios.get('http://34.133.21.109/api/v1/search/realTimeKeyword').then((res) => {
+    axios.get('http://34.123.156.208/api/v1/search/realTimeKeyword').then((res) => {
       const sortedData = res.data.sort((a, b) => b.count - a.count);
       setSortedData(sortedData);
     }).catch((err) => {
@@ -43,7 +43,7 @@ const SearchRealTimeKeyWord = (props) => {
 
   const searchCommunitys = (text) => {
 
-    axios.get(`http:///34.133.21.109/api/v1/search/communitySearch?name=${text}`).then((res) => {
+    axios.get(`http:///34.123.156.208/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
       if (res.status == 200) {
 
@@ -54,7 +54,7 @@ const SearchRealTimeKeyWord = (props) => {
   }
 
   const postRealTimeKeyWord = (text) => {
-    axios.get(`http://34.133.21.109/api/v1/search/name?name=${text}`).then((res) => {
+    axios.get(`http://34.123.156.208/api/v1/search/name?name=${text}`).then((res) => {
 
     }).catch((err) => {
       console.log(err);
