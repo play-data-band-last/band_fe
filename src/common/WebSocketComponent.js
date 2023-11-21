@@ -19,15 +19,9 @@ const WebSocketComponent = (props) => {
 
     })
 
-    // const calcUserNum = userInfo.userSeq % 3;
-    //
-    // console.log(calcUserNum)
-    //
-
-
     // WebSocket 연결 설정
     // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
-    const socket = new SockJS(`http://104.197.46.54:8000/stomp-endpoint-0`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://104.197.46.54/stomp-endpoint-0`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
     stomp.connect({}, (frame) => {

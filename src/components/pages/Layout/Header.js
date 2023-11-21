@@ -69,7 +69,7 @@ const Header = () => {
     findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
         communityIds = res.data.map((item) => item.communityId);
-        axios.post('http://192.168.0.229:9100/api/v1/notify/community', communityIds, {
+        axios.post('http://104.197.46.54/api/v1/notify/community', communityIds, {
           params : {
             page : 0,
             size : 100

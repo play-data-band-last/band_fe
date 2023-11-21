@@ -14,7 +14,7 @@ const SearchRealTimeKeyWord = (props) => {
   }, [props.sortedData]);
 
   const getRealTimeKeyWord = () => {
-      axios.get('http://192.168.0.229:8080/api/v1/search/realTimeKeyword').then((res) => {
+      axios.get('http://104.197.46.54/api/v1/search/realTimeKeyword').then((res) => {
       const sortedData = res.data.sort((a, b) => b.count - a.count);
       setSortedData(sortedData);
     }).catch((err) => {
@@ -54,7 +54,7 @@ const SearchRealTimeKeyWord = (props) => {
   }
 
   const postRealTimeKeyWord = (text) => {
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${text}`).then((res) => {
+    axios.get(`http://104.197.46.54/api/v1/search/name?name=${text}`).then((res) => {
 
     }).catch((err) => {
       console.log(err);

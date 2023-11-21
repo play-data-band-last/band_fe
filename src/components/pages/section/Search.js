@@ -72,7 +72,7 @@ const Search = () => {
     setSuggestBool(!suggestBool);
 
     try {
-      const response = await axios.get(`http://192.168.0.229:8080/api/v1/search/typoSuggestKeywords?name=${searchText}`);
+      const response = await axios.get(`http://104.197.46.54/api/v1/search/typoSuggestKeywords?name=${searchText}`);
 
       if (response.status != 200) {
         return '';
@@ -108,11 +108,11 @@ const Search = () => {
 
   const postRealTimeKeyWord = () => {
 
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${searchText}`).then((res) => {
+    axios.get(`http://104.197.46.54/api/v1/search/name?name=${searchText}`).then((res) => {
       setObserver(!observer);
 
       setTimeout(() => {
-        axios.get('http://192.168.0.229:8080/api/v1/search/realTimeKeyword').then((res) => {
+        axios.get('http://104.197.46.54/api/v1/search/realTimeKeyword').then((res) => {
           const sortedData = res.data.sort((a, b) => b.count - a.count);
           setSortedData(sortedData);
         }).catch((err) => {
@@ -139,7 +139,7 @@ const Search = () => {
   const textHandler = (e) => {
     setSearchText(e.target.value);
 
-    axios.get(`http://192.168.0.229:8080/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
+    axios.get(`http://104.197.46.54/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
       setSearchSuggest(res.data);
 
     }).catch((err) => {
