@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import classes from '../../../styles/pages/Search.module.css';
 import back from '../../../asset/images/back.png';
 import hot from '../../../asset/images/hot.png';
 import search from '../../../asset/images/search.png';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchRealTimeKeyWord from "../../blocks/SearchRealTimeKeyWord";
 import HistoryKeyWord from "../../blocks/HistoryKeyWord";
 import SuggestionKeyWord from "../../blocks/SuggestionKeyWord";
-import {categoryMenu} from "../../../common/Menus";
+import { categoryMenu } from "../../../common/Menus";
 import Category from "../../blocks/Category";
 import Loading from "../../atoms/Loading";
 import axios from "axios";
-import {Mobile, PC} from "../../config/Responsive";
-import {interestCommunityGet} from "../../../common/api/ApiGetService";
+import { Mobile, PC } from "../../config/Responsive";
+import { interestCommunityGet } from "../../../common/api/ApiGetService";
 
 const Search = () => {
   const nav = useNavigate();
@@ -45,7 +45,7 @@ const Search = () => {
 
   const searchFunc = async () => {
     if (searchText == '') {
-      return ;
+      return;
     }
 
     // 검색 시 검색어 초기화 & 단어 자동완성 사라지게..
@@ -72,7 +72,7 @@ const Search = () => {
     setSuggestBool(!suggestBool);
 
     try {
-      const response = await axios.get(`http://192.168.0.229:8080/api/v1/search/typoSuggestKeywords?name=${searchText}`);
+      const response = await axios.get(`http://34.133.21.109/api/v1/search/typoSuggestKeywords?name=${searchText}`);
 
       if (response.status != 200) {
         return '';
@@ -108,11 +108,11 @@ const Search = () => {
 
   const postRealTimeKeyWord = () => {
 
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${searchText}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/name?name=${searchText}`).then((res) => {
       setObserver(!observer);
 
       setTimeout(() => {
-        axios.get('http://192.168.0.229:8080/api/v1/search/realTimeKeyword').then((res) => {
+        axios.get('http://34.133.21.109/api/v1/search/realTimeKeyword').then((res) => {
           const sortedData = res.data.sort((a, b) => b.count - a.count);
           setSortedData(sortedData);
         }).catch((err) => {
@@ -139,7 +139,7 @@ const Search = () => {
   const textHandler = (e) => {
     setSearchText(e.target.value);
 
-    axios.get(`http://192.168.0.229:8080/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
       setSearchSuggest(res.data);
 
     }).catch((err) => {
@@ -162,7 +162,7 @@ const Search = () => {
             </div>
             <div className={classes.headerInputArea}>
               <input value={searchText} placeholder="검색어 입력" onKeyDown={handleInputKeyDown} onChange={textHandler} />
-              {searchSuggest.length != 0 && <div style={{height : searchSuggest.length > 5 ?'60vw' : 'auto', overflowY : searchSuggest.length > 5 ? 'scroll' : 'auto'}} className={classes.suggestToolTip}>
+              {searchSuggest.length != 0 && <div style={{ height: searchSuggest.length > 5 ? '60vw' : 'auto', overflowY: searchSuggest.length > 5 ? 'scroll' : 'auto' }} className={classes.suggestToolTip}>
                 {searchSuggest.map((item, idx) => (
                   <div key={idx} className={classes.suggestToolTipItem}>
                     <img src={hot} />
@@ -190,7 +190,7 @@ const Search = () => {
           </div>
           <div className={classes.category}>
             {categoryMenu.map((item, idx) => (
-              <div onClick={() => {categoryClickMethod(item.menuName)}} key={idx} className={classes.categoryAreaWrap}>
+              <div onClick={() => { categoryClickMethod(item.menuName) }} key={idx} className={classes.categoryAreaWrap}>
                 <Category mb='2vw' textWidth='auto' color='#333' width='13vw' height='13vw' imgPath={item.imgPath} value={item.menuName} />
               </div>
             ))}

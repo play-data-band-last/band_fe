@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from '../../../styles/pages/Search.module.css';
 import back from '../../../asset/images/back.png';
 import hot from '../../../asset/images/hot.png';
 import search from '../../../asset/images/search.png';
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../atoms/Loading";
 import axios from "axios";
-import {Mobile, PC} from "../../config/Responsive";
+import { Mobile, PC } from "../../config/Responsive";
 import SuggestComunity from "../../blocks/SuggestComunity";
-import {saveToLocalStorage} from "../../../common/CommonFunc";
-import {interestCommunityGet} from "../../../common/api/ApiGetService";
+import { saveToLocalStorage } from "../../../common/CommonFunc";
+import { interestCommunityGet } from "../../../common/api/ApiGetService";
 
 const SearchResult = () => {
   const nav = useNavigate();
@@ -35,7 +35,7 @@ const SearchResult = () => {
     setMenuName(menuName);
     interestCommunityGet(menuName, 0, 10).then((res) => {
 
-      if(res.status === 200) {
+      if (res.status === 200) {
         const newData = res.data.content;
         setCommunityList(newData);
       }
@@ -53,12 +53,12 @@ const SearchResult = () => {
 
       if (keyword != null) {
         searchCommunitys(keyword);
-        return ;
+        return;
       }
 
       if (interest != null) {
         searchInterest(interest)
-        return ;
+        return;
       }
 
 
@@ -78,7 +78,7 @@ const SearchResult = () => {
 
     axios.get(`http://localhost:8080/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
-      if(res.status == 200) {
+      if (res.status == 200) {
         console.log(res.data)
         setCommunityList(res.data);
       }
@@ -98,7 +98,7 @@ const SearchResult = () => {
   const searchFunc = async () => {
     // 공백 검색 불가
     if (searchText == '') {
-      return ;
+      return;
     }
 
     // 검색 시 검색했던 단어 초기화 & 단어 자동완성 사라지게..
@@ -138,7 +138,7 @@ const SearchResult = () => {
     setSuggestBool(!suggestBool);
 
     try {
-      const response = await axios.get(`http://192.168.0.229:8080/api/v1/search/typoSuggestKeywords?name=${searchText}`);
+      const response = await axios.get(`http:/34.133.21.109/api/v1/search/typoSuggestKeywords?name=${searchText}`);
 
       if (response.status != 200) {
         return null;
@@ -175,7 +175,7 @@ const SearchResult = () => {
   }
 
   const postRealTimeKeyWord = (text) => {
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${text}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/name?name=${text}`).then((res) => {
 
     }).catch((err) => {
       console.log(err);
@@ -195,7 +195,7 @@ const SearchResult = () => {
   const textHandler = (e) => {
     setSearchText(e.target.value);
 
-    axios.get(`http://192.168.0.229:8080/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/suggestKeywords?name=${e.target.value}`).then((res) => {
       setSearchSuggest(res.data);
 
     }).catch((err) => {
@@ -208,9 +208,9 @@ const SearchResult = () => {
     setLoading(true);
 
     const storageData = {
-      communityName : data.description,
-      communityImgPath : data.profileImage,
-      communityId : data.communityId
+      communityName: data.description,
+      communityImgPath: data.profileImage,
+      communityId: data.communityId
     }
 
     // localstorage 저장..
@@ -246,19 +246,19 @@ const SearchResult = () => {
       setPage(page + 1);
       setLoading(true);
 
-        setTimeout(() => {
-          setLoading(false);
-          interestCommunityGet(menuName, page, 5).then((res) => {
-            if(res.status === 200) {
-              const newData = res.data.content;
-              setCommunityList(prevData => [...prevData, ...newData]);
-            }
+      setTimeout(() => {
+        setLoading(false);
+        interestCommunityGet(menuName, page, 5).then((res) => {
+          if (res.status === 200) {
+            const newData = res.data.content;
+            setCommunityList(prevData => [...prevData, ...newData]);
+          }
 
-          }).catch((err) => {
+        }).catch((err) => {
 
-          })
-        }, 500);
-      }
+        })
+      }, 500);
+    }
 
   };
 
@@ -277,7 +277,7 @@ const SearchResult = () => {
             </div>
             <div className={classes.headerInputArea}>
               <input value={searchText} placeholder="검색어 입력" onKeyDown={handleInputKeyDown} onChange={textHandler} />
-              {searchSuggest.length != 0 && <div style={{height : searchSuggest.length > 5 ?'60vw' : 'auto', overflowY : searchSuggest.length > 5 ? 'scroll' : 'auto'}} className={classes.suggestToolTip}>
+              {searchSuggest.length != 0 && <div style={{ height: searchSuggest.length > 5 ? '60vw' : 'auto', overflowY: searchSuggest.length > 5 ? 'scroll' : 'auto' }} className={classes.suggestToolTip}>
                 {searchSuggest.map((item, idx) => (
                   <div key={idx} className={classes.suggestToolTipItem}>
                     <img src={hot} />

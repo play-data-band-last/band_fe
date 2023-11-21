@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from '../../styles/pages/Search.module.css';
 import history from '../../asset/images/history.png';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HistoryKeyWord = (props) => {
   // 로컬 스토리지에서 기존 검색 기록을 가져옴.. 기존 기록이 없으면 빈 배열을 생성..
@@ -66,9 +66,9 @@ const HistoryKeyWord = (props) => {
 
   const searchCommunitys = (text) => {
 
-    axios.get(`http://localhost:8080/api/v1/search/communitySearch?name=${text}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
-      if(res.status == 200) {
+      if (res.status == 200) {
 
       }
     }).catch((err) => {
@@ -77,7 +77,7 @@ const HistoryKeyWord = (props) => {
   }
 
   const postRealTimeKeyWord = (text) => {
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${text}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/name?name=${text}`).then((res) => {
 
     }).catch((err) => {
       console.log(err);
@@ -95,7 +95,7 @@ const HistoryKeyWord = (props) => {
                 <img src={history} />
                 <p onClick={searchTextFunc}>{item}</p>
               </div>
-              <div className={classes.historyKeywordRight} onClick={() => {removeHistoryKeyWord(item)}}>
+              <div className={classes.historyKeywordRight} onClick={() => { removeHistoryKeyWord(item) }}>
                 <p>×</p>
               </div>
             </div>

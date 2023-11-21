@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from '../../styles/pages/Search.module.css';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchRealTimeKeyWord = (props) => {
   const [realTimeKeyWord, setRealTimeKeyWord] = useState([]);
@@ -14,7 +14,7 @@ const SearchRealTimeKeyWord = (props) => {
   }, [props.sortedData]);
 
   const getRealTimeKeyWord = () => {
-      axios.get('http://192.168.0.229:8080/api/v1/search/realTimeKeyword').then((res) => {
+    axios.get('http://34.133.21.109/api/v1/search/realTimeKeyword').then((res) => {
       const sortedData = res.data.sort((a, b) => b.count - a.count);
       setSortedData(sortedData);
     }).catch((err) => {
@@ -43,9 +43,9 @@ const SearchRealTimeKeyWord = (props) => {
 
   const searchCommunitys = (text) => {
 
-    axios.get(`http://localhost:8080/api/v1/search/communitySearch?name=${text}`).then((res) => {
+    axios.get(`http:///34.133.21.109/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
-      if(res.status == 200) {
+      if (res.status == 200) {
 
       }
     }).catch((err) => {
@@ -54,7 +54,7 @@ const SearchRealTimeKeyWord = (props) => {
   }
 
   const postRealTimeKeyWord = (text) => {
-    axios.get(`http://192.168.0.229:8080/api/v1/search/name?name=${text}`).then((res) => {
+    axios.get(`http://34.133.21.109/api/v1/search/name?name=${text}`).then((res) => {
 
     }).catch((err) => {
       console.log(err);
@@ -86,7 +86,7 @@ const SearchRealTimeKeyWord = (props) => {
         <div className={classes.historyKeywordArea}>
           {(sortedData != null && sortedData.length != 0) ? sortedData.map((item, idx) => (
             <div key={idx} className={classes.historyKeyword}>
-              <div onClick={searchTextFunc} className={classes.historyKeywordLeft} style={{height : '5vw'}}>
+              <div onClick={searchTextFunc} className={classes.historyKeywordLeft} style={{ height: '5vw' }}>
                 <p>{item.key}</p>
               </div>
               <div className={classes.historyKeywordRight}>
