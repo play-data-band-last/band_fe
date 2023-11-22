@@ -4,6 +4,8 @@ import piano from "../../asset/images/piano.jpeg";
 
 const SuggestComunity = (props) => {
 
+  console.log(props)
+
   const backgroundRef = useRef();
 
   const suggestionClickMethod = () => {

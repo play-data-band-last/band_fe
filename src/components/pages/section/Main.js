@@ -125,7 +125,6 @@ const Main = () => {
       // 일정 인피니티 스크롤
       if (scheduleArea) {
         setLoading(true);
-
         // 빈 arr 만들어서..
         const array = [];
 
@@ -273,6 +272,7 @@ const Main = () => {
         setScheduleArea(true);
 
         interestCommunityScheduleGet(array).then((res) => {
+          debugger
           setScheduleArray(res.data);
         }).catch((err) => {
           console.log(err);
