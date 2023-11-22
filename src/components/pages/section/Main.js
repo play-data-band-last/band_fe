@@ -272,7 +272,6 @@ const Main = () => {
         setScheduleArea(true);
 
         interestCommunityScheduleGet(array).then((res) => {
-          debugger
           setScheduleArray(res.data);
         }).catch((err) => {
           console.log(err);

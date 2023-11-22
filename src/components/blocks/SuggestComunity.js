@@ -4,8 +4,6 @@ import piano from "../../asset/images/piano.jpeg";
 
 const SuggestComunity = (props) => {
 
-  console.log(props)
-
   const backgroundRef = useRef();
 
   const suggestionClickMethod = () => {
@@ -25,7 +23,7 @@ const SuggestComunity = (props) => {
       <div className={classes.suggestionRight}>
         <div className={classes.suggestionRightInner}>
           <h2 className={classes.suggestionTitle}>{props.data != undefined && props.data.name}</h2>
-          <p className={classes.suggestionDesc}>Since 1998</p>
+          <p className={classes.suggestionDesc}>{props.data != undefined && props.data.description}</p>
           <div className={classes.suggestionDetail}>
             <p className={classes.location}>강남구</p>
             <p className={classes.gb}>|</p>
