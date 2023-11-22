@@ -65,37 +65,37 @@ const Main = () => {
     })
 
 
-    userRecommandCommunity(array, page, size).then((res) => {
-
-      if (res.status === 200) {
-        if (mainFirstReq) {
-
-          const arr = res.data.content;
-
-          for (const [idx, item] of res.data.content.entries()) {
-            findByCommunityMember(item.id)
-              .then((res) => {
-
-                if (res.data.length == 0) {
-                  arr[idx].memberCount = 0;
-                } else {
-                  arr[idx].memberCount = res.data.length;
-                }
-
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
-          setCommunityList(arr);
-          setMainFirstReq(false);
-        }
-
-      }
-
-    }).catch((err) => {
-
-    })
+    // userRecommandCommunity(array, page, size).then((res) => {
+    //
+    //   if (res.status === 200) {
+    //     if (mainFirstReq) {
+    //
+    //       const arr = res.data.content;
+    //
+    //       for (const [idx, item] of res.data.content.entries()) {
+    //         findByCommunityMember(item.id)
+    //           .then((res) => {
+    //
+    //             if (res.data.length == 0) {
+    //               arr[idx].memberCount = 0;
+    //             } else {
+    //               arr[idx].memberCount = res.data.length;
+    //             }
+    //
+    //           })
+    //           .catch((err) => {
+    //             console.log(err);
+    //           });
+    //       }
+    //       setCommunityList(arr);
+    //       setMainFirstReq(false);
+    //     }
+    //
+    //   }
+    //
+    // }).catch((err) => {
+    //
+    // })
 
 
     window.addEventListener('scroll', handleScroll);
@@ -124,6 +124,7 @@ const Main = () => {
 
     // 스크롤이 페이지 하단에 도달
     if (scrollTop + windowHeight + 1 >= documentHeight) {
+
 
       // 일정 인피니티 스크롤
       if (scheduleArea) {
