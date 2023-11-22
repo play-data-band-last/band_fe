@@ -17,6 +17,7 @@ const ClassDetailMain = (props) => {
   const [btnSwitch, setBtnSwitch] = useState(false);
   const nav = useNavigate();
 
+
   const scheduleHandler = (item, idx) => {
     const newScheduleStates = [...scheduleStates];
     newScheduleStates[idx] = !newScheduleStates[idx];
@@ -118,7 +119,7 @@ const ClassDetailMain = (props) => {
 
             <p className={myClasses.descAreaParam}>{props.communityInfo.description}</p>
             {
-              props.communityInfo.id != userInfo.userSeq &&
+              props.communityInfo.ownerId != userInfo.userSeq &&
               <div className={myClasses.insertBtnWrap}>
                 {!props.isCommunityMember && <div onClick={communityInsertHandler} className={myClasses.insertBtn}><p>가입하기</p></div>}
                 {props.isCommunityMember && <div onClick={communityInsertCancelHandler} className={myClasses.insertBtn}><p>취소하기</p></div>}
