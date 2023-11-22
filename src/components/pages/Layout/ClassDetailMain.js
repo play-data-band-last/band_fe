@@ -190,7 +190,7 @@ const ClassDetailMain = (props) => {
                       <img src={newImg} />
                     </div>
                     <div>
-                      <p>{item.mbti}</p>
+                      <p>안녕하세요. {item.memberName} 입니다.</p>
                     </div>
                   </div>
                 </div>

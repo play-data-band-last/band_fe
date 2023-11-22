@@ -194,7 +194,7 @@ const Header = () => {
         <div style={{position :'relative'}} className={classes.headerLeft}>
           {accuracy !== 0 && <p className={classes.headerLeftText}>{`${latitude}, ${longitude}`}</p>}
           {accuracy !== 0 && <span style={{position : 'absolute', top: '6vw', left : '0', color : '#adb3b6', fontSize : '3vw'}}>{`약 ${accuracy.toLocaleString()} M 차이가 있습니다.`}</span>}
-          {accuracy === 0 && <p>위치 찾는 중..</p>}
+          {accuracy === 0 && <p>위치 정보 수집중..</p>}
         </div>
         <div className={classes.headerRight}>
           <img alt='img' onClick={goToSearchPage} className={classes.notiImg} src={search} />
