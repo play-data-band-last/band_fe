@@ -113,13 +113,13 @@ const CreateAlbum = () => {
 
         <div className={classes.inputArea}>
           <Input onChange={locationHandler} placeholder="제목" value="이미지 URL" type="text" />
-          <Input
-            placeholder="프로필 이미지"
-            value="프로필 이미지"
-            type="file"
-            accept="image/*" // 이미지 파일만 허용
-            onChange={(e) => handleImageUpload(e)}
-          />
+          {/*<Input*/}
+          {/*  placeholder="프로필 이미지"*/}
+          {/*  value="프로필 이미지"*/}
+          {/*  type="file"*/}
+          {/*  accept="image/*" // 이미지 파일만 허용*/}
+          {/*  onChange={(e) => handleImageUpload(e)}*/}
+          {/*/>*/}
           <div className={classes.findArea}></div>
           <Button onClick={signupHandler} value="만들기" />
         </div>

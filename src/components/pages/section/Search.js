@@ -185,9 +185,9 @@ const Search = () => {
             </div>
           </div>
           {/*가지고놀때 수정하자*/}
-          <div className={classes.suggestionArea}>
-            <SuggestionKeyWord />
-          </div>
+          {/*<div className={classes.suggestionArea}>*/}
+          {/*  <SuggestionKeyWord />*/}
+          {/*</div>*/}
           <div className={classes.category}>
             {categoryMenu.map((item, idx) => (
               <div onClick={() => {categoryClickMethod(item.menuName)}} key={idx} className={classes.categoryAreaWrap}>
