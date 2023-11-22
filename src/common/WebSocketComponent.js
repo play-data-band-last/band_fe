@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-import {findByMyCommunity} from "./api/ApiGetService";
 import {useSelector} from "react-redux";
 
 const WebSocketComponent = (props) => {
@@ -10,14 +9,13 @@ const WebSocketComponent = (props) => {
 
   useEffect(() => {
     let communityIds = [];
-
-    findByMyCommunity(userInfo.userSeq).then((res) => {
-      if (res.status === 200) {
-        communityIds = res.data.map((item) => item.communityId);
-      }
-    }).catch((err) => {
-
-    })
+    // findByMyCommunity(userInfo.userSeq).then((res) => {
+    //   if (res.status === 200) {
+    //     communityIds = res.data.map((item) => item.communityId);
+    //   }
+    // }).catch((err) => {
+    //
+    // })
 
     // WebSocket 연결 설정
     // const socket = new SockJS(`http://localhost:900${calcUserNum}/stomp-endpoint-${calcUserNum}`); // WebSocket 서버 주소
@@ -59,7 +57,7 @@ const WebSocketComponent = (props) => {
         stompClient.disconnect();
       }
     };
-  }, [props, userInfo.userSeq]); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
+  }, []); // 빈 배열을 두어서 컴포넌트가 마운트될 때만 이펙트가 실행되도록 합니다.
 
   return (
     <div>

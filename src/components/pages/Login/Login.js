@@ -132,7 +132,7 @@ const Login = () => {
         <div className={classes.findArea}></div>
         <Button onClick={loginSubmitHandler} value="로그인" />
 
-        <Button onClick={teacherAuth} background="#F7E600" color="rgb(20, 22, 23)" value="Auth Server 로그인" />
+        {/*<Button onClick={teacherAuth} background="#F7E600" color="rgb(20, 22, 23)" value="Auth Server 로그인" />*/}
       </div>
       <div className={classes.signupArea}>
         <div className={classes.signupAreaInner}>

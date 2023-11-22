@@ -76,7 +76,7 @@ const SearchResult = () => {
   const searchCommunitys = (text) => {
     setLoading(false);
 
-    axios.get(`http://localhost:8080/api/v1/search/communitySearch?name=${text}`).then((res) => {
+    axios.get(`http://104.197.46.54/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
       if(res.status == 200) {
         console.log(res.data)

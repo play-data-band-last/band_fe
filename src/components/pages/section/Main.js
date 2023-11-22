@@ -40,7 +40,10 @@ const Main = () => {
   const [scheduleArea, setScheduleArea] = useState(false);
   const [scheduleArray, setScheduleArray] = useState([]);
   const [displayCreateCommunity, setDisplayCreateCommunity] = useState(false);
-
+  let mainNum = 0;
+  let scheduleNum = 0;
+  let newCommunityNum = 0;
+  let categoryNum = 0;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,21 +51,21 @@ const Main = () => {
 
   useEffect(() => {
     // 로그인 아니면 튕굼..
-    // if (!userInfo.isLogin) {
-    //   nav('/');
-    //   return;
-    // }
+    if (!userInfo.isLogin) {
+      nav('/');
+      return;
+    }
 
     // 빈 arr 만들어서..
     const array = [];
 
     // arr에 저장..
-    // userInfo.interest.forEach((item, idx) => {
-    //   array.push(item.interest);
-    // })
+    userInfo.interest.forEach((item, idx) => {
+      array.push(item.interest);
+    })
 
 
-    userRecommandCommunity(userInfo.interest, page, size).then((res) => {
+    userRecommandCommunity(array, page, size).then((res) => {
 
       if (res.status === 200) {
         if (mainFirstReq) {
@@ -101,8 +104,8 @@ const Main = () => {
       // 컴포넌트 언마운트 시 스크롤 이벤트 리스너 제거
       window.removeEventListener('scroll', handleScroll);
     };
-
-  }, [categorySelect, selectMenuName, scheduleArea]);
+  // categorySelect, selectMenuName, scheduleArea
+  }, []);
 
   const handleScroll = () => {
 
@@ -121,7 +124,6 @@ const Main = () => {
 
     // 스크롤이 페이지 하단에 도달
     if (scrollTop + windowHeight + 1 >= documentHeight) {
-      setPage(page + 1);
 
       // 일정 인피니티 스크롤
       if (scheduleArea) {
@@ -131,16 +133,17 @@ const Main = () => {
         const array = [];
 
         // arr에 저장..
-        // userInfo.interest.forEach((item, idx) => {
-        //   array.push(item.interest);
-        // })
+        userInfo.interest.forEach((item, idx) => {
+          array.push(item.interest);
+        })
 
         setTimeout(() => {
           setLoading(false);
-          interestCommunityScheduleGet(userInfo.interest).then((res) => {
+          interestCommunityScheduleGet(array, scheduleNum, 5).then((res) => {
             if(res.status === 200) {
               const newData = res.data;
               setScheduleArray(prevData => [...prevData, ...newData]);
+              scheduleNum++;
             }
           }).catch((err) => {
             console.log(err);
@@ -156,12 +159,13 @@ const Main = () => {
         setLoading(true);
 
         setTimeout(() => {
-          interestCommunityGet(selectMenuName, page, 5).then((res) => {
+          interestCommunityGet(selectMenuName, categoryNum, 5).then((res) => {
             setLoading(false);
 
             if(res.status === 200) {
               const newData = res.data.content;
               setCommunityList(prevData => [...prevData, ...newData]);
+              categoryNum++;
             }
 
           }).catch((err) => {
@@ -178,12 +182,13 @@ const Main = () => {
 
         setTimeout(() => {
 
-          interestNewCommunityGet(selectMenuName, page, size).then((res) => {
+          interestNewCommunityGet(selectMenuName, newCommunityNum, size).then((res) => {
             setLoading(false);
 
             if(res.status === 200) {
               const newData = res.data.content;
               setCommunityList(prevData => [...prevData, ...newData]);
+              newCommunityNum++;
             }
 
           }).catch((err) => {
@@ -194,16 +199,13 @@ const Main = () => {
         return ;
       }
 
-
-
       // 일반 main 에서 인피니티 스크롤..
-      // const array = [];
-      // userInfo.interest.forEach((item, idx) => {
-      //   array.push(item.interest);
-      // })
+      const array = [];
+      userInfo.interest.forEach((item, idx) => {
+        array.push(item.interest);
+      })
 
-      userRecommandCommunity(userInfo.interest, page, 5).then((res) => {
-
+      userRecommandCommunity(array, mainNum, 5).then((res) => {
         setLoading(true);
 
         setTimeout(() => {
@@ -212,6 +214,7 @@ const Main = () => {
           if (res.status === 200) {
             const newData = res.data.content;
             setCommunityList(prevData => [...prevData, ...newData]);
+            mainNum++;
           }
 
         }, 500);
@@ -230,15 +233,15 @@ const Main = () => {
 
       setLoading(true);
       // 빈 arr 만들어서..
-      // const array = [];
-      //
-      // // arr에 저장..
-      // userInfo.interest.forEach((item, idx) => {
-      //   array.push(item.interest);
-      // })
+      const array = [];
+
+      // arr에 저장..
+      userInfo.interest.forEach((item, idx) => {
+        array.push(item.interest);
+      })
 
       setTimeout(() => {
-        userRecommandCommunity(userInfo.interest, 0, 10).then((res) => {
+        userRecommandCommunity(array, 0, 10).then((res) => {
           setLoading(false);
           if (res.status === 200) {
             setCommunityList(res.data.content);
@@ -261,18 +264,18 @@ const Main = () => {
       setLoading(true);
 
       // 빈 arr 만들어서..
-      // const array = [];
-      //
-      // // arr에 저장..
-      // userInfo.interest.forEach((item, idx) => {
-      //   array.push(item.interest);
-      // })
+      const array = [];
+
+      // arr에 저장..
+      userInfo.interest.forEach((item, idx) => {
+        array.push(item.interest);
+      })
 
       setTimeout(() => {
         setLoading(false);
         setScheduleArea(true);
 
-        interestCommunityScheduleGet(userInfo.interest).then((res) => {
+        interestCommunityScheduleGet(array).then((res) => {
           setScheduleArray(res.data);
         }).catch((err) => {
           console.log(err);
@@ -369,14 +372,14 @@ const Main = () => {
   }
 
   const mainCategoryGet = () => {
-    // const array = [];
-    //
-    // // arr에 저장..
-    // userInfo.interest.forEach((item, idx) => {
-    //   array.push(item.interest);
-    // })
+    const array = [];
 
-    userRecommandCommunity(userInfo.interest, page, size).then((res) => {
+    // arr에 저장..
+    userInfo.interest.forEach((item, idx) => {
+      array.push(item.interest);
+    })
+
+    userRecommandCommunity(array, page, size).then((res) => {
 
       if (res.status === 200) {
         if (mainFirstReq) {

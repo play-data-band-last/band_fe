@@ -66,7 +66,7 @@ const HistoryKeyWord = (props) => {
 
   const searchCommunitys = (text) => {
 
-    axios.get(`http://localhost:8080/api/v1/search/communitySearch?name=${text}`).then((res) => {
+    axios.get(`http://104.197.46.54/api/v1/search/communitySearch?name=${text}`).then((res) => {
 
       if(res.status == 200) {
 

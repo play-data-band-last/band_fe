@@ -8,7 +8,6 @@ import positionOptions from "../../../common/positionOptions";
 import {useCallback, useEffect, useRef, useState} from "react";
 import WebSocketComponent from "../../../common/WebSocketComponent";
 import {useSelector} from "react-redux";
-import {findByMyCommunity} from "../../../common/api/ApiGetService";
 import axios from "axios";
 import Loading from "../../atoms/Loading";
 import {userLocationSave} from "../../../common/api/ApiPostService";
@@ -66,7 +65,7 @@ const Header = () => {
     //   console.log(event);
     // });
 
-    findByMyCommunity(userInfo.userSeq).then((res) => {
+    /*findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
         communityIds = res.data.map((item) => item.communityId);
         axios.post('http://104.197.46.54/api/v1/notify/community', communityIds, {
@@ -87,7 +86,7 @@ const Header = () => {
       }
     }).catch((err) => {
 
-    })
+    })*/
 
   }, [userInfo.userSeq, observer]);
 
@@ -178,7 +177,7 @@ const Header = () => {
     setTimeout(() => {
       setLoading(false);
 
-      axios.post(`http://localhost:9100/api/v1/notify/chageRead/${data.id}`).then((res) => {
+      axios.post(`http://104.197.46.54/api/v1/notify/chageRead/${data.id}`).then((res) => {
         // res
 
         setObserver(!observer);
