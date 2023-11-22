@@ -10,6 +10,7 @@ import {Mobile, PC} from "../../config/Responsive";
 import SuggestComunity from "../../blocks/SuggestComunity";
 import {saveToLocalStorage} from "../../../common/CommonFunc";
 import {interestCommunityGet} from "../../../common/api/ApiGetService";
+import SearchSuggestComunity from "../../blocks/SearchSuggestComunity";
 
 const SearchResult = () => {
   const nav = useNavigate();
@@ -209,8 +210,8 @@ const SearchResult = () => {
 
     const storageData = {
       communityName : data.description,
-      communityImgPath : data.profileImage,
-      communityId : data.communityId
+      communityImgPath : data.profile_image,
+      communityId : data.id
     }
 
     // localstorage 저장..
@@ -218,7 +219,7 @@ const SearchResult = () => {
 
     setTimeout(() => {
       setLoading(false);
-      nav(`/classDetail?detail=${data.communityId}`);
+      nav(`/classDetail?detail=${data.id}`);
     }, 400);
   }
 
@@ -295,7 +296,7 @@ const SearchResult = () => {
           <div className={classes.searchResultArea}>
             <h2 className={classes.resultTitle}><span>{keyword != null ? keyword : interest}</span> (으)로 검색하신 결과</h2>
             {communityList.length == 0 ? <p className={classes.notData}>검색 결과가 없습니다.</p> : communityList.map((item, idx) => (
-              <SuggestComunity padding="search" data={item} key={idx} onClick={() => goToDetail(item)} />
+              <SearchSuggestComunity padding="search" data={item} key={idx} onClick={() => goToDetail(item)} />
             ))}
           </div>
 

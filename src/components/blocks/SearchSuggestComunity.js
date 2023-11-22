@@ -2,9 +2,9 @@ import React, {useRef} from 'react';
 import classes from "../../styles/blocks/SuggestComunity.module.css";
 import piano from "../../asset/images/piano.jpeg";
 
-const SuggestComunity = (props) => {
+const SearchSuggestComunity = (props) => {
   const backgroundRef = useRef();
-
+  console.log(props)
   const suggestionClickMethod = () => {
     backgroundRef.current.style.background = 'rgb(229 226 226)';
 
@@ -17,7 +17,7 @@ const SuggestComunity = (props) => {
   return (
     <div style={{padding : props.padding == 'search' ? '4vw 0' : '4vw 3vw'}} ref={backgroundRef} onClick={suggestionClickMethod} className={classes.suggestionArea}>
       <div className={classes.suggestionLeft}>
-        <div className={classes.suggestionLeftInner}><img src={props.data != undefined && props.data.profileImage} /></div>
+        <div className={classes.suggestionLeftInner}><img src={props.data != undefined && props.data.profile_image} /></div>
       </div>
       <div className={classes.suggestionRight}>
         <div className={classes.suggestionRightInner}>
@@ -35,4 +35,4 @@ const SuggestComunity = (props) => {
   );
 };
 
-export default SuggestComunity;
+export default SearchSuggestComunity;
