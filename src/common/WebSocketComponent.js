@@ -28,13 +28,14 @@ const WebSocketComponent = () => {
     // const socket = new SockJS(socketUrl);
 
     // WebSocket 연결 설정
-    const socket = new SockJS(`http://localhost:8081/stomp-endpoint${userInfo.userSeq % 3}`); // WebSocket 서버 주소
+    const socket = new SockJS(`http://34.123.156.208/stomp-endpoint${userInfo.userSeq % 3}`); // WebSocket 서버 주소
     const stomp = Stomp.over(socket);
 
     stomp.connect({}, () => {
       // 연결이 성공하면 실행될 코드
       console.log('Connected to WebSocket');
       setStompClient(stomp);
+
 
       // communityIds.map((item, idx) => {
       //   stomp.subscribe(`/topic/notify/community/${item}`, (message) => {
