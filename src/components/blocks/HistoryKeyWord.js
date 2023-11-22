@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../../styles/pages/Search.module.css';
-import history from '../../asset/images/history.png';
+import history from '../../asset/images/history.webp';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 

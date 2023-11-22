@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import myClasses from "../../../styles/pages/ClassDetail.module.css";
 import classes from "../../../styles/pages/ClassDetailAlbum.module.css";
-import classImg from "../../../asset/images/class.jpeg";
-import like from "../../../asset/images/like.png";
-import addBtn from "../../../asset/images/add.png";
+import like from "../../../asset/images/like.webp";
+import addBtn from "../../../asset/images/add.webp";
 import Loading from "../../atoms/Loading";
 import {useNavigate} from "react-router-dom";
 import {likeInsertFunc} from "../../../common/api/ApiPostService";

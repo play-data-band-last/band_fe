@@ -1,17 +1,17 @@
-import sports from "../asset/images/sports.png";
-import music from "../asset/images/music.png";
-import trip from "../asset/images/trip.png";
-import book from "../asset/images/book.png";
-import work from "../asset/images/work.png";
-import eng from "../asset/images/eng.png";
-import show from "../asset/images/show.png";
-import make from "../asset/images/make.png";
-import dance from "../asset/images/dance.png";
-import car from "../asset/images/car.png";
-import coffee from "../asset/images/coffee.png";
-import camera from "../asset/images/cam.png";
-import game from "../asset/images/play.png";
-import cook from "../asset/images/cook.png";
+import sports from "../asset/images/sports.webp";
+import music from "../asset/images/music.webp";
+import trip from "../asset/images/trip.webp";
+import book from "../asset/images/book.webp";
+import work from "../asset/images/work.webp";
+import eng from "../asset/images/eng.webp";
+import show from "../asset/images/show.webp";
+import make from "../asset/images/make.webp";
+import dance from "../asset/images/dance.webp";
+import car from "../asset/images/car.webp";
+import coffee from "../asset/images/coffee.webp";
+import camera from "../asset/images/cam.webp";
+import game from "../asset/images/play.webp";
+import cook from "../asset/images/cook.webp";
 
 export const categoryMenu = [
     {

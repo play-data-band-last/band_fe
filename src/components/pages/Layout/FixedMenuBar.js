@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "../../../styles/pages/FixedMenuBar.module.css";
-import home from "../../../asset/images/home.png";
-import mypage from "../../../asset/images/mypage.png";
+import home from "../../../asset/images/home.webp";
+import mypage from "../../../asset/images/mypage.webp";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 

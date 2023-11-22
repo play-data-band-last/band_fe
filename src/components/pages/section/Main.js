@@ -2,22 +2,18 @@ import Header from "../Layout/Header";
 import {Mobile, PC} from "../../config/Responsive";
 import classes from "../../../styles/pages/Main.module.css";
 import {useEffect, useRef, useState} from "react";
-import banner from "../../../asset/images/banner.png";
+import banner from "../../../asset/images/banner.webp";
 import Category from "../../blocks/Category";
 import {categoryMenu} from "../../../common/Menus";
 import SuggestComunity from "../../blocks/SuggestComunity";
 import FixedMenuBar from "../Layout/FixedMenuBar";
 import {useNavigate} from "react-router-dom";
 import Loading from "../../atoms/Loading";
-import {
-  findByCommunityMember,
-  interestCommunityGet,
-  interestNewCommunityGet, test222
-} from "../../../common/api/ApiGetService";
+import {findByCommunityMember, interestCommunityGet, interestNewCommunityGet} from "../../../common/api/ApiGetService";
 import {useSelector} from "react-redux";
 import {interestCommunityScheduleGet, userRecommandCommunity} from "../../../common/api/ApiPostService";
 import SuggestSchedule from "../../blocks/SuggestSchedule";
-import addBtn from "../../../asset/images/add.png";
+import addBtn from "../../../asset/images/add.webp";
 import {saveToLocalStorage} from "../../../common/CommonFunc";
 
 const Main = () => {

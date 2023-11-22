@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from "../../../styles/pages/Main.module.css";
 import {Mobile, PC} from "../../config/Responsive";
 import Loading from "../../atoms/Loading";
-import mainLogo from "../../../asset/images/mainlogo2.png";
+import mainLogo from "../../../asset/images/mainlogo2.webp";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import PopupDom from "../../blocks/PopupDom";

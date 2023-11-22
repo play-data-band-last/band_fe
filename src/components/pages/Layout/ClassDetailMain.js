@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import myClasses from "../../../styles/pages/ClassDetail.module.css";
-import newImg from "../../../asset/images/new.png";
+import newImg from "../../../asset/images/new.webp";
 import {scheduleInsert} from "../../../common/api/ApiPostService";
 import {useSelector} from "react-redux";
 import Loading from "../../atoms/Loading";
 import classes from "../../../styles/pages/Main.module.css";
-import addBtn from "../../../asset/images/add.png";
+import addBtn from "../../../asset/images/add.webp";
 import {useNavigate} from "react-router-dom";
 
 const ClassDetailMain = (props) => {

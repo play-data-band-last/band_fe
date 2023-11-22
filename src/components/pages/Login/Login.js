@@ -1,5 +1,5 @@
 import classes from "../../../styles/pages/Main.module.css";
-import mainLogo from "../../../asset/images/mainlogo.png";
+import mainLogo from "../../../asset/images/mainlogo.webp";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {useNavigate} from "react-router-dom";

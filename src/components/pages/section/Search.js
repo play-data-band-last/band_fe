@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import classes from '../../../styles/pages/Search.module.css';
-import back from '../../../asset/images/back.png';
-import hot from '../../../asset/images/hot.png';
-import search from '../../../asset/images/search.png';
+import back from '../../../asset/images/back.webp';
+import hot from '../../../asset/images/hot.webp';
+import search from '../../../asset/images/search.webp';
 import {useNavigate} from "react-router-dom";
 import SearchRealTimeKeyWord from "../../blocks/SearchRealTimeKeyWord";
 import HistoryKeyWord from "../../blocks/HistoryKeyWord";

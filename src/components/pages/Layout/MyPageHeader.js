@@ -1,4 +1,4 @@
-import set from "../../../asset/images/setting.png";
+import set from "../../../asset/images/setting.webp";
 import classes from "../../../styles/pages/Header.module.css";
 const MyPageHeader = () => {
   return (

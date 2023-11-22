@@ -1,9 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import classes from "../../styles/blocks/CategorySelect.module.css";
-import arrowBot from "../../asset/images/arrowbottom.png";
-import arrowTop from "../../asset/images/arrowtop.png";
-import {useSelector} from "react-redux";
-
+import arrowBot from "../../asset/images/arrowbottom.webp";
+import arrowTop from "../../asset/images/arrowtop.webp";
 
 
 const CategorySelect = (props) => {

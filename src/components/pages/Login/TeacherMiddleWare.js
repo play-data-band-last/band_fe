@@ -1,15 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import classes from "../../../styles/pages/Main.module.css";
-import {Mobile, PC} from "../../config/Responsive";
 import Loading from "../../atoms/Loading";
-import mainLogo from "../../../asset/images/mainlogo2.png";
-import Input from "../../atoms/Input";
-import Button from "../../atoms/Button";
-import PopupDom from "../../blocks/PopupDom";
-import MsgPopup from "../../blocks/MsgPopup";
-import ConfirmPopup from "../../blocks/ConfirmPopup";
-import {emailCheck, passCheck} from "../../../common/Reg";
-import {findByTeacherLoginIngo, myTokenInfo} from "../../../common/api/ApiGetService";
+import {findByTeacherLoginIngo} from "../../../common/api/ApiGetService";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {teacherLogin} from "../../../common/api/ApiPostService";

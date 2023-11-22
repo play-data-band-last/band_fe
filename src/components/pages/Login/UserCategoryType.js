@@ -1,5 +1,5 @@
 import classes from "../../../styles/pages/Main.module.css";
-import mainLogo from "../../../asset/images/mainlogo2.png";
+import mainLogo from "../../../asset/images/mainlogo2.webp";
 import {useNavigate} from "react-router-dom";
 import {Mobile, PC} from "../../config/Responsive";
 import Category from "../../blocks/Category";
