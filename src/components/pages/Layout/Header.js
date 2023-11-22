@@ -47,23 +47,14 @@ const Header = () => {
 
   useEffect(() => {
     let communityIds = [];
-    // eureka 연결 이슈 때문에 잠시..주석
-    // getMemberNotify([609, 508], 0 ,10).then((res) => {
-    //   debugger
-    //   if (res.status == 200) {
-    //     setNotifyList(res.data.content);
-    //   }
-    // }).catch((err) => {
-    //
-    // })
 
+    console.log(userInfo.userSeq)
+    //sse
+    const eventSource = new EventSource(`http://104.197.46.54/notifications/subscribe/${userInfo.userSeq}`);
 
-    // sse
-    // const eventSource = new EventSource('http://localhost:8000/notifications/subscribe/1');
-    //
-    // eventSource.addEventListener('sse', event => {
-    //   console.log(event);
-    // });
+    eventSource.addEventListener('sse', event => {
+      console.log(event);
+    });
 
     /*findByMyCommunity(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
@@ -223,7 +214,7 @@ const Header = () => {
 
         </div>
       </div>
-      <WebSocketComponent socketData={socketData} />
+      {/*<WebSocketComponent socketData={socketData} />*/}
       {loading && <Loading />}
     </header>
   )

@@ -130,11 +130,11 @@ const ModifyInfo = () => {
 
 
         <div className={classes.inputArea}>
-          <Input onChange={locationHandler} placeholder="example@naver.com" value="email" type="text" />
-          <Input onChange={categorySubHandler} placeholder="********" value="password" type="password" />
-          <Input onChange={categorySubHandler2} placeholder="김길동" value="name" type="text" />
-          <Input onChange={categorySubHandler3} placeholder="ENFJ" value="mbti" type="text" />
-          <Input onChange={categorySubHandler4} placeholder="이미지 URL" value="이미지 URL" type="text" />
+          <Input onChange={locationHandler} placeholder="example@naver.com" value="현재 Email" type="text" />
+          <Input onChange={categorySubHandler} placeholder="********" value="현재 password" type="password" />
+          <Input onChange={categorySubHandler2} placeholder="김길동" value="변경할 이름" type="text" />
+          <Input onChange={categorySubHandler3} placeholder="ENFJ" value="변경할 MBTI" type="text" />
+          <Input onChange={categorySubHandler4} placeholder="이미지 URL" value="변경할 이미지 URL" type="text" />
 
           <div className={classes.findArea}></div>
           <Button onClick={signupHandler} value="수정하기" />
