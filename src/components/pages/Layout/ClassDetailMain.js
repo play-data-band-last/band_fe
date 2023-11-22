@@ -17,7 +17,7 @@ const ClassDetailMain = (props) => {
   const [btnSwitch, setBtnSwitch] = useState(false);
 
   const nav = useNavigate();
-  console.log(props)
+
   const scheduleHandler = (item, idx) => {
     const newScheduleStates = [...scheduleStates];
     newScheduleStates[idx] = !newScheduleStates[idx];
@@ -190,7 +190,7 @@ const ClassDetailMain = (props) => {
                       <img src={newImg} />
                     </div>
                     <div>
-                      <p>안녕하세요. {item.memberName} 입니다.</p>
+                      <p>{item.memberRole}</p>
                     </div>
                   </div>
                 </div>
