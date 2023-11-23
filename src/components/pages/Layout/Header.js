@@ -48,13 +48,10 @@ const Header = () => {
   useEffect(() => {
     let communityIds = [];
 
-    console.log(userInfo.userSeq)
     //sse
     const eventSource = new EventSource(`http://104.197.46.54/notifications/subscribe/${userInfo.userSeq}`);
 
     eventSource.addEventListener('sse', event => {
-      console.log(JSON.parse(event.data));
-
       setNotifyList(prevState => [...prevState, JSON.parse(event.data)]);
     });
 
@@ -200,18 +197,17 @@ const Header = () => {
           </div>}
           <div ref={toolTipRef} className={classes.notifyArea}>
             {notifyList.length !== 0 ?notifyList.map((item, idx) => (
-              <p>test</p>
-              // <div onClick={() => {readChange(item)}} key={idx} className={classes.notifyAreaItem}>
-              //   <div className={classes.notifyAreaItemLeft}>
-              //     <div className={classes.notifyAreaItemLeftImg}>
-              //       <img alt='img' src={item.memberProfileImg} />
-              //     </div>
-              //   </div>
-              //   <div className={classes.notifyAreaItemRight}>
-              //     <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
-              //     {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
-              //   </div>
-              // </div>
+              <div onClick={() => {readChange(item)}} key={idx} className={classes.notifyAreaItem}>
+                <div className={classes.notifyAreaItemLeft}>
+                  <div className={classes.notifyAreaItemLeftImg}>
+                    <img alt='img' src={item.memberProfileImg} />
+                  </div>
+                </div>
+                <div className={classes.notifyAreaItemRight}>
+                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
+                  {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
+                </div>
+              </div>
             )) : <p className={classes.notNotify}>알림 내역이 없습니다.</p>}
           </div>
 
