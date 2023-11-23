@@ -43,6 +43,7 @@ const ClassDetail = () => {
   const [communityInfo, setCommunityInfo] = useState({});
   const [communityCount, setCommunityCount] = useState('');
   const [communitiyId, setCommunitiyId] = useState(0);
+  const [ownerId, setOwnerId] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState({show : false, msg: '', gb : '', data : ''});
@@ -65,6 +66,7 @@ const ClassDetail = () => {
     const detailValue = urlParams.get('detail');
 
     setCommunitiyId(urlParams.get('detail'));
+    setOwnerId(urlParams.get('ownerId'));
 
 
     borderAction(urlParams.get('pageIdx'));
@@ -310,7 +312,7 @@ const ClassDetail = () => {
     if (isConfirmPopupOpen.gb === 'community') {
 
       setTimeout(() => {
-        communityInsert(communitiyId, userInfo.userSeq, userInfo.username, "일반회원", userInfo.profileImgPath, communityInfo.description, communityInfo.profileImage).then((res) => {
+        communityInsert(communitiyId, userInfo.userSeq, userInfo.username, "일반회원", userInfo.profileImgPath, communityInfo.description, communityInfo.profileImage, ownerId).then((res) => {
           setLoading(false);
 
           findByCommunityCountHandler(communitiyId);

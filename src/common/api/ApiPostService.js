@@ -33,14 +33,15 @@ export const userRecommandCommunity = (interestArray, page, size) => apiClient.p
 export const userInterestSave = (interest, userId) => apiClient.post(`/api/v1/bandMember/${userId}/interest`, {
   interest
 })
-export const communityInsert = (communityId, memberId, memberName, memberRole, memberImage, communityName, communityImage) => apiClient.post(`/api/v1/communitymember/${communityId}`, {
+export const communityInsert = (communityId, memberId, memberName, memberRole, memberImage, communityName, communityImage, ownerId) => apiClient.post(`/api/v1/communitymember/${communityId}`, {
   memberId,
   memberName,
   memberRole,
   memberImage,
   communityName,
   communityImage,
-  communityId
+  communityId,
+  ownerId
 })
 
 export const userChatMsg = (communityId, memberId, memberName, memberImage, content) => apiClient.post('http://172.30.1.17:9090/api/v1/chattings', {
