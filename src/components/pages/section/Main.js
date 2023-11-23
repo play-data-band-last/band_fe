@@ -47,10 +47,10 @@ const Main = () => {
 
   useEffect(() => {
     // 로그인 아니면 튕굼..
-    if (!userInfo.isLogin) {
-      nav('/');
-      return;
-    }
+    // if (!userInfo.isLogin) {
+    //   nav('/');
+    //   return;
+    // }
 
     // 빈 arr 만들어서..
     const array = [];

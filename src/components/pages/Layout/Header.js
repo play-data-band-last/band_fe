@@ -53,7 +53,9 @@ const Header = () => {
     const eventSource = new EventSource(`http://104.197.46.54/notifications/subscribe/${userInfo.userSeq}`);
 
     eventSource.addEventListener('sse', event => {
-      console.log(event);
+      console.log(JSON.parse(event.data));
+
+      setNotifyList(prevState => [...prevState, JSON.parse(event.data)]);
     });
 
     /*findByMyCommunity(userInfo.userSeq).then((res) => {
@@ -111,7 +113,7 @@ const Header = () => {
 
 
 
-    setNotifyListLength(0);
+    // setNotifyListLength(0);
     if (showNotify) {
       toolTipRef.current.style.height = '0';
       toolTipRef.current.style.visibility = 'hidden';
@@ -125,23 +127,23 @@ const Header = () => {
     setShowNotify(!showNotify);
   }
 
-  const socketData = (msg) => {
-
-    setNotifyListLength((prevNotifyListLength) => {
-      const lastLength = prevNotifyListLength + 1;
-
-      return lastLength;
-    });
-
-    setNotifyList(prevNotifyList => {
-      // 새로운 메시지를 추가한 새로운 배열을 만듭니다.
-      const updatedNotifyList = [...prevNotifyList, msg];
-
-      // 계산된 새로운 배열을 반환하여 상태를 업데이트합니다.
-      return updatedNotifyList;
-    });
-
-  }
+  // const socketData = (msg) => {
+  //
+  //   setNotifyListLength((prevNotifyListLength) => {
+  //     const lastLength = prevNotifyListLength + 1;
+  //
+  //     return lastLength;
+  //   });
+  //
+  //   setNotifyList(prevNotifyList => {
+  //     // 새로운 메시지를 추가한 새로운 배열을 만듭니다.
+  //     const updatedNotifyList = [...prevNotifyList, msg];
+  //
+  //     // 계산된 새로운 배열을 반환하여 상태를 업데이트합니다.
+  //     return updatedNotifyList;
+  //   });
+  //
+  // }
 
   const formatDate = (originalDate) => {
     if (originalDate === undefined) {
@@ -198,17 +200,18 @@ const Header = () => {
           </div>}
           <div ref={toolTipRef} className={classes.notifyArea}>
             {notifyList.length !== 0 ?notifyList.map((item, idx) => (
-              <div onClick={() => {readChange(item)}} key={idx} className={classes.notifyAreaItem}>
-                <div className={classes.notifyAreaItemLeft}>
-                  <div className={classes.notifyAreaItemLeftImg}>
-                    <img alt='img' src={item.memberProfileImg} />
-                  </div>
-                </div>
-                <div className={classes.notifyAreaItemRight}>
-                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
-                  {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
-                </div>
-              </div>
+              <p>test</p>
+              // <div onClick={() => {readChange(item)}} key={idx} className={classes.notifyAreaItem}>
+              //   <div className={classes.notifyAreaItemLeft}>
+              //     <div className={classes.notifyAreaItemLeftImg}>
+              //       <img alt='img' src={item.memberProfileImg} />
+              //     </div>
+              //   </div>
+              //   <div className={classes.notifyAreaItemRight}>
+              //     <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
+              //     {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
+              //   </div>
+              // </div>
             )) : <p className={classes.notNotify}>알림 내역이 없습니다.</p>}
           </div>
 

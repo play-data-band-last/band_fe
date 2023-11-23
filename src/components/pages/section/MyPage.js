@@ -72,7 +72,7 @@ const MyPage = () => {
             <h2>{userInfo.username}</h2>
             <p>
               <span>{userInfo.mbti}</span>
-              <span>1994.09.11</span>
+              {/*<span>1994.09.11</span>*/}
             </p>
           </div>
         </div>
