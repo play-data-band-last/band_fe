@@ -18,7 +18,7 @@ const ClassDetailChat = (props) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://172.30.1.17:9090/api/v1/chattings', {
+        const response = await axios.get('http://192.168.0.229:9090/api/v1/chattings', {
           params: {
             communityId: props.communitiyId
           }
@@ -30,7 +30,7 @@ const ClassDetailChat = (props) => {
       }
     };
 
-    // fetchData();
+    fetchData();
 
     fetchDataInterval = setInterval(() => {
       setTimeData((prevTimeData) => !prevTimeData);
@@ -89,7 +89,7 @@ const ClassDetailChat = (props) => {
       <div className={classes.chatWrap}>
         <div className={classes.chatContents}>
           <div className={classes.chatDate}>
-            <p>2023년 09월 19일 화요일</p>
+            <p>2023년 11월 24일 목요일</p>
           </div>
           {chatList.map((item, idx) => (
             <div key={idx}>

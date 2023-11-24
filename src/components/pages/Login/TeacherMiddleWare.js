@@ -17,7 +17,7 @@ const TeacherMiddleWare = () => {
     const authParam = urlParams.get('auth');
 
 
-    axios.get('http://172.30.1.17:8080/api/v1/auth/me', {
+    axios.get('http://localhost:9090/api/v1/auth/me', {
       headers: {
         Authorization: `Bearer ${authParam}`
       }
