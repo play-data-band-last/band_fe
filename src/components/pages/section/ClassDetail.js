@@ -312,7 +312,7 @@ const ClassDetail = () => {
     if (isConfirmPopupOpen.gb === 'community') {
 
       setTimeout(() => {
-        communityInsert(communitiyId, userInfo.userSeq, userInfo.username, "일반회원", userInfo.profileImgPath, communityInfo.description, communityInfo.profileImage, ownerId).then((res) => {
+        communityInsert(userInfo.userSeq, userInfo.username, "일반회원", userInfo.profileImgPath, communityInfo.description, communityInfo.profileImage,communitiyId, ownerId).then((res) => {
           setLoading(false);
 
           findByCommunityCountHandler(communitiyId);
