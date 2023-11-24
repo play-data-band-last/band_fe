@@ -149,6 +149,9 @@ const Header = () => {
       return '';
     }
     const parsedDate = new Date(originalDate);
+
+    parsedDate.setHours(parsedDate.getHours() + 6);
+
     const options = {
       // year: "numeric",
       // month: "2-digit",
@@ -160,7 +163,7 @@ const Header = () => {
       // weekday: "short",
     };
 
-    return new Intl.DateTimeFormat("ko-KR", options).format(originalDate);
+    return new Intl.DateTimeFormat("ko-KR", options).format(parsedDate);
   }
 
   const readChange = (data) => {
