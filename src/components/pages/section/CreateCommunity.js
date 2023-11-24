@@ -114,13 +114,13 @@ const CreateCommunity = () => {
             <CategorySelect setCategory={setCategory} menuList={categoryMenu} />
           </div>
 
-          <Input
-            placeholder="프로필 이미지"
-            value="프로필 이미지"
-            type="file"
-            accept="image/*" // 이미지 파일만 허용
-            onChange={(e) => handleImageUpload(e)}
-          />
+          {/*<Input*/}
+          {/*  placeholder="프로필 이미지"*/}
+          {/*  value="프로필 이미지"*/}
+          {/*  type="file"*/}
+          {/*  accept="image/*" // 이미지 파일만 허용*/}
+          {/*  onChange={(e) => handleImageUpload(e)}*/}
+          {/*/>*/}
           <div className={classes.findArea}></div>
           <Button onClick={signupHandler} value="만들기" />
         </div>
