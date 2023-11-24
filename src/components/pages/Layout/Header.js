@@ -173,7 +173,7 @@ const Header = () => {
 
       userNotifyChangeRead(data.id).then((res) => {
         // setObserver(!observer);
-        nav(`/classDetail?detail=${data.communityId}&ownerId=${data.ownerId}`);
+        nav(`/classDetail?detail=${data.memberId}&ownerId=${data.ownerId}`);
       }).catch((err) => {
         console.log(err);
       })
