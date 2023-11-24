@@ -10,7 +10,8 @@ import WebSocketComponent from "../../../common/WebSocketComponent";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import Loading from "../../atoms/Loading";
-import {userLocationSave} from "../../../common/api/ApiPostService";
+import {userLocationSave, userNotifyChangeRead} from "../../../common/api/ApiPostService";
+import {findByMyNotifys} from "../../../common/api/ApiGetService";
 
 const Header = () => {
   const nav = useNavigate();
@@ -27,58 +28,59 @@ const Header = () => {
   const [loading, setLoading] = useState(false);
 
   // 위치 가까운곳..까지 받아오기
+  // useEffect(() => {
+  //
+  //
+  //   if (testLocation) {
+  //     const { latitude, longitude, accuracy } = testLocation;
+  //     setLatitude(latitude);
+  //     setLongitude(longitude);
+  //     setAccuracy(Math.floor(accuracy));
+  //
+  //     userLocationSave(userInfo.userSeq, `${latitude}, ${longitude}`).then((res) => {
+  //       console.log(res.data)
+  //     }).catch((err) => {
+  //
+  //     })
+  //   }
+  //
+  // }, [userInfo.userSeq, testLocation]);
+
   useEffect(() => {
+    // 내 알림 내역 가져오기..
+    findByMyNotifys(userInfo.userSeq).then((res) => {
+      if (res.status === 200) {
+        setNotifyListLength(res.data.length);
+        setNotifyList(res.data);
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
 
-
-    if (testLocation) {
-      const { latitude, longitude, accuracy } = testLocation;
-      setLatitude(latitude);
-      setLongitude(longitude);
-      setAccuracy(Math.floor(accuracy));
-
-      userLocationSave(userInfo.userSeq, `${latitude}, ${longitude}`).then((res) => {
-        console.log(res.data)
-      }).catch((err) => {
-
-      })
-    }
-
-  }, [userInfo.userSeq, testLocation]);
+  }, [observer])
 
   useEffect(() => {
-    let communityIds = [];
-
     //sse
     const eventSource = new EventSource(`http://104.197.46.54/notifications/subscribe/${userInfo.userSeq}`);
 
-    eventSource.addEventListener('sse', event => {
-      setNotifyList(prevState => [...prevState, JSON.parse(event.data)]);
-    });
+    const handleSSE = (event) => {
+      const notifyData = event.data;
 
-    /*findByMyCommunity(userInfo.userSeq).then((res) => {
-      if (res.status === 200) {
-        communityIds = res.data.map((item) => item.communityId);
-        axios.post('http://104.197.46.54/api/v1/notify/community', communityIds, {
-          params : {
-            page : 0,
-            size : 100
-          }
-        }).then((res) => {
-          if (res.status === 200) {
-            const filteredData = res.data.content.filter(item => item.memberId !== userInfo.userSeq);
-            const filteredData2 = res.data.content.filter(item => !item.read && item.memberId !== userInfo.userSeq);
-            setNotifyListLength(filteredData2.length);
-            setNotifyList(filteredData);
-          }
-        }).catch((err) => {
-
-        })
+      if (!notifyData.includes('EventStream Created')) {
+        setNotifyList(prevState => [...prevState, JSON.parse(event.data)]);
+        setNotifyListLength(prevState => prevState + 1);
       }
-    }).catch((err) => {
+    };
 
-    })*/
+    // 이벤트 리스너 등록
+    eventSource.addEventListener('sse', handleSSE);
 
-  }, [userInfo.userSeq, observer]);
+    // 컴포넌트가 언마운트될 때 이벤트 소스 정리
+    return () => {
+      eventSource.removeEventListener('sse', handleSSE);
+      eventSource.close();
+    };
+  }, []);
 
 
   const handleClickOutside = useCallback((event) => {
@@ -110,7 +112,7 @@ const Header = () => {
 
 
 
-    // setNotifyListLength(0);
+    setNotifyListLength(0);
     if (showNotify) {
       toolTipRef.current.style.height = '0';
       toolTipRef.current.style.visibility = 'hidden';
@@ -163,17 +165,26 @@ const Header = () => {
 
   const readChange = (data) => {
     setLoading(true);
+    console.log(data)
+
 
     setTimeout(() => {
       setLoading(false);
 
-      axios.post(`http://104.197.46.54/api/v1/notify/chageRead/${data.id}`).then((res) => {
-        // res
-
-        setObserver(!observer);
+      userNotifyChangeRead(data.id).then((res) => {
+        // setObserver(!observer);
+        nav(`/classDetail?detail=${data.communityId}&ownerId=${data.ownerId}`);
       }).catch((err) => {
-          // err
+        console.log(err);
       })
+
+      // axios.post(`http://104.197.46.54/api/v1/notify/chageRead/${data.id}`).then((res) => {
+      //   // res
+      //
+      //   setObserver(!observer);
+      // }).catch((err) => {
+      //     // err
+      // })
 
     }, 500);
   }
@@ -204,7 +215,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className={classes.notifyAreaItemRight}>
-                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
+                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 모임에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
                   {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
                 </div>
               </div>

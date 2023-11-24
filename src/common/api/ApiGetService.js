@@ -40,6 +40,7 @@ export const findByCommunityMember = (communityId) => apiClient.get(`/api/v1/com
 export const findByTeacherLoginIngo = (userEmail) => apiClient.get(`/api/v1/user/teacherAccountInfo/${userEmail}`);
 
 export const findByScheduleMember = (scheduleId) => apiClient.get(`/api/v1/schedule/schedule/${scheduleId}`);
+export const findByMyNotifys = (ownerId) => apiClient.get(`/api/v1/notify/community/${ownerId}`);
 
 
 

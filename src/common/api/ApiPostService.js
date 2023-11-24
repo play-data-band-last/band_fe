@@ -1,4 +1,5 @@
 import {apiClient} from "./ApiClient";
+import axios from "axios";
 
 
 export const teacherLogin = (email, name) => apiClient.post(`/api/v1/user/teacher`, {
@@ -33,7 +34,7 @@ export const userRecommandCommunity = (interestArray, page, size) => apiClient.p
 export const userInterestSave = (interest, userId) => apiClient.post(`/api/v1/bandMember/${userId}/interest`, {
   interest
 })
-export const communityInsert = (communityId, memberId, memberName, memberRole, memberImage, communityName, communityImage, ownerId) => apiClient.post(`/api/v1/communitymember/${communityId}`, {
+export const communityInsert = (memberId, memberName, memberRole, memberImage, communityName, communityImage,communityId, ownerId) => apiClient.post(`/api/v1/communitymember/${communityId}`, {
   memberId,
   memberName,
   memberRole,
@@ -111,3 +112,7 @@ export const userLocationSave = (id, location) => apiClient.put('api/v1/user/loc
   id,
   location
 })
+
+export const userNotifyChangeRead = (id) => apiClient.post(`/api/v1/notify/chageRead/${id}`);
+
+

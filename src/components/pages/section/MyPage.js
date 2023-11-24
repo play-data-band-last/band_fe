@@ -11,6 +11,7 @@ import {findByMyReserve} from "../../../common/api/ApiGetService";
 import MyClassCarousel from "../../blocks/MyClassCarousel";
 import MyHistoryClassCarousel from "../../blocks/MyHistoryClassCarousel";
 import Loading from "../../atoms/Loading";
+import defaultImg from "../../../asset/images/defaultprofile.webp";
 
 const MyPage = () => {
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
@@ -22,10 +23,10 @@ const MyPage = () => {
 
   useEffect(() => {
 
-    if (!userInfo.isLogin) {
-      nav('/');
-      return;
-    };
+    // if (!userInfo.isLogin) {
+    //   nav('/');
+    //   return;
+    // };
 
     findByMyReserve(userInfo.userSeq).then((res) => {
       if (res.status === 200) {
@@ -62,7 +63,8 @@ const MyPage = () => {
         <div className={myClasses.myArea}>
           <div className={myClasses.myAreaLeft}>
             <div className={myClasses.myProfileImg}>
-              <img className={myClasses.myProfileImgInner} src={userInfo.profileImgPath} />
+              {userInfo.profileImgPath == null && <img className={myClasses.myProfileImgInner} src={defaultImg}/>}
+              {userInfo.profileImgPath != null && <img className={myClasses.myProfileImgInner} src={userInfo.profileImgPath} />}
               <div onClick={modifyMethod} className={myClasses.modiImg}>
                 <img src={set} />
               </div>

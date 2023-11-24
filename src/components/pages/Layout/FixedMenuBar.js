@@ -4,6 +4,7 @@ import home from "../../../asset/images/home.webp";
 import mypage from "../../../asset/images/mypage.webp";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import defaultImg from "../../../asset/images/defaultprofile.webp";
 
 const FixedMenuBar = (props) => {
   const userInfo = useSelector(state => state.loginCheck.loginInfo);
@@ -26,7 +27,9 @@ const FixedMenuBar = (props) => {
           </li>
           <li onClick={() => {linkMethod('/myPage')}}>
             <div className={classes.myImg}>
-              <img className={classes.img3} src={userInfo.profileImgPath} />
+              {userInfo.profileImgPath == null && <img className={classes.img3} src={defaultImg}/>}
+              {userInfo.profileImgPath != null && <img className={classes.img3} src={userInfo.profileImgPath} />}
+
             </div>
             <p>내정보</p>
           </li>

@@ -47,10 +47,13 @@ const UserCategoryType = () => {
     setLoading(true);
 
     try {
-      for (const item of selectedItems) {
-        const res = await userInterestSave(item, isLogin.userSeq);
-      }
+      // 비동기 호출들을 모아둘 배열
+      const savePromises = selectedItems.map(item => userInterestSave(item, isLogin.userSeq));
 
+      // 모든 비동기 호출이 완료될 때까지 기다림
+      await Promise.all(savePromises);
+
+      // 모든 비동기 호출이 완료되면 이 부분으로 이동
       nav('/main');
     } catch (err) {
       console.log(err);
