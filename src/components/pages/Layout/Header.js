@@ -160,7 +160,7 @@ const Header = () => {
       // weekday: "short",
     };
 
-    return new Intl.DateTimeFormat("ko-KR", options).format(parsedDate);
+    return new Intl.DateTimeFormat("ko-KR", options).format(originalDate);
   }
 
   const readChange = (data) => {
@@ -215,8 +215,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className={classes.notifyAreaItemRight}>
-                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 모임에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span>
-                    <span className={classes.dateSpan}>{`(${item.currTime})`}</span></p>
+                  <p className={classes.notifyAreaItemRightParam}><span>{item.memberName}</span> 님 께서 <span>{item.communityName}</span> 모임에 가입하셨습니다. <span className={classes.dateSpan}>{`(${formatDate(item.currTime)})`}</span></p>
                   {item.read !== false ? <img alt='img'  src={check} className={classes.checkImg} /> : ''}
                 </div>
               </div>
