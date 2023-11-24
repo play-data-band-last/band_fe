@@ -150,7 +150,7 @@ const Header = () => {
     }
     const parsedDate = new Date(originalDate);
 
-    parsedDate.setHours(parsedDate.getHours() + 6);
+    parsedDate.setHours(parsedDate.getHours() - 6);
 
     const options = {
       // year: "numeric",
