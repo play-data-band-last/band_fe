@@ -55,6 +55,8 @@ const Main = () => {
     // 빈 arr 만들어서..
     const array = [];
 
+    console.log(userInfo.interest)
+
     // arr에 저장..
     userInfo.interest.forEach((item, idx) => {
       array.push(item.interest);

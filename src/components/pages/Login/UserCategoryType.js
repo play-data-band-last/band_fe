@@ -52,7 +52,6 @@ const UserCategoryType = () => {
 
       // 모든 비동기 호출이 완료될 때까지 기다림
       await Promise.all(savePromises);
-
       // 모든 비동기 호출이 완료되면 이 부분으로 이동
       nav('/main');
     } catch (err) {
