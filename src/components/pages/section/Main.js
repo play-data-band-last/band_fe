@@ -46,7 +46,7 @@ const Main = () => {
   }, [])
 
   useEffect(() => {
-    // 로그인 아니면 튕굼..
+    // 로그인 아니면 튕굼...
     if (!userInfo.isLogin) {
       nav('/');
       return;
