@@ -3,7 +3,6 @@ import classes from "../../../styles/pages/ClassDetailChat.module.css";
 import axios from "axios";
 import {userChatMsg} from "../../../common/api/ApiPostService";
 import {useSelector} from "react-redux";
-import WebSocketComponent from "../../../common/WebSocketComponent";
 
 const ClassDetailChat = (props) => {
 
@@ -18,7 +17,7 @@ const ClassDetailChat = (props) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.0.229:9090/api/v1/chattings', {
+        const response = await axios.get('http://104.197.46.54/api/v1/chattings', {
           params: {
             communityId: props.communitiyId
           }

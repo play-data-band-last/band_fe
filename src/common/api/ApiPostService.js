@@ -45,7 +45,7 @@ export const communityInsert = (memberId, memberName, memberRole, memberImage, c
   ownerId
 })
 
-export const userChatMsg = (communityId, memberId, memberName, memberImage, content) => apiClient.post('http://192.168.0.229:9090/api/v1/chattings', {
+export const userChatMsg = (communityId, memberId, memberName, memberImage, content) => apiClient.post('api/v1/chattings', {
   communityId,
   memberId,
   memberName,
