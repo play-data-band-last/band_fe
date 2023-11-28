@@ -330,7 +330,6 @@ const Main = () => {
 
   const goToDetail = (data) => {
     setLoading(true);
-    debugger
     const storageData = {
       communityName : data.description,
       communityImgPath : data.profileImage,

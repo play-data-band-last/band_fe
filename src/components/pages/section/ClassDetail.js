@@ -35,6 +35,7 @@ import {
 } from "../../../common/api/ApiPostService";
 import Loading from "../../atoms/Loading";
 import {loginCheckAction} from "../../../ducks/loginCheck";
+import axios from "axios";
 
 const ClassDetail = () => {
   const border = useRef();
@@ -192,6 +193,8 @@ const ClassDetail = () => {
 
   }
 
+
+
   const findByCommunityAlbumService = (communitiyId) => {
     findByCommunityAlbum(communitiyId).then((res) => {
       if(res.status === 200) {
@@ -203,7 +206,6 @@ const ClassDetail = () => {
   }
 
   const borderAction = (idx) => {
-
 
     switch (idx) {
       case 0 :
@@ -218,7 +220,6 @@ const ClassDetail = () => {
       case 2 :
         findByCommunityAlbumService(communitiyId);
       break;
-
 
     }
 

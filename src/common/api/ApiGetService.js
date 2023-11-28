@@ -42,6 +42,12 @@ export const findByTeacherLoginIngo = (userEmail) => apiClient.get(`/api/v1/user
 export const findByScheduleMember = (scheduleId) => apiClient.get(`/api/v1/schedule/schedule/${scheduleId}`);
 export const findByMyNotifys = (ownerId) => apiClient.get(`/api/v1/notify/community/${ownerId}`);
 
+export const findByMemberChattings = (communityId) => apiClient.get('/api/v1/chattings', {
+  params : {
+    communityId
+  }
+})
+
 
 
 

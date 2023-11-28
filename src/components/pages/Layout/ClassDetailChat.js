@@ -13,6 +13,7 @@ const ClassDetailChat = (props) => {
   const scrollRef = useRef();
 
   useEffect(() => {
+
     let fetchDataInterval;
 
     const fetchData = async () => {
@@ -88,7 +89,7 @@ const ClassDetailChat = (props) => {
       <div className={classes.chatWrap}>
         <div className={classes.chatContents}>
           <div className={classes.chatDate}>
-            <p>2023년 11월 24일 목요일</p>
+            <p>2023년 11월 28일 화요일</p>
           </div>
           {chatList.map((item, idx) => (
             <div key={idx}>
